@@ -1,9 +1,27 @@
 package crossover.airts.booking;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+ 
+@Entity
+@Table(name = "reservation_spot")
 public class ReservationSpot {
 	
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@Column(name = "spot_name", nullable = false)
 	private String name;
+	
+	@Column(name = "spot_code", nullable = false)
 	private String code;
 
 	public ReservationSpot() {}
@@ -35,6 +53,33 @@ public class ReservationSpot {
 		this.code = code;
 	}
 
-	
+	@Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + id;
+        return result;
+    }
+ 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (!(obj instanceof ReservationSpot))
+            return false;
+        ReservationSpot other = (ReservationSpot) obj;
+        if (id != other.id)
+            return false;
+        return true;
+    }
+ 
+    @Override
+    public String toString() {
+        return "ReservationSpot [id=" + id + ", Name=" + name + ", Code="
+                + code + "]";
+    }
+ 	
 	
 }

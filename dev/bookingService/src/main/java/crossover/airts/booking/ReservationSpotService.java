@@ -2,7 +2,9 @@ package crossover.airts.booking;
 
 import java.util.ArrayList;  
 import java.util.HashMap;  
-import java.util.List;  
+import java.util.List;
+
+import org.hibernate.Session;  
   
 
 
@@ -30,8 +32,21 @@ public class ReservationSpotService {
   
  public List<ReservationSpot> getAll()  
  {  
-	 List<ReservationSpot> spots = new ArrayList<ReservationSpot>(reservationSpotIdMap.values());  
-	 return spots;  
+	 //List<ReservationSpot> spots = new ArrayList<ReservationSpot>(reservationSpotIdMap.values());  
+	 //return spots;
+	 
+	 Session session = HibernateUtil.getSessionFactory().openSession();
+     session.beginTransaction();
+
+     @SuppressWarnings("unchecked")
+     List<ReservationSpot> spots = (List<ReservationSpot>) session.createQuery(
+             " FROM ReservationSpot s ORDER BY s.name ASC").list();
+
+     session.getTransaction().commit();
+     session.close();
+     return spots;	 
+	 
+	 
  }  
   
  public ReservationSpot getById(int id) throws ReservationSpotNotFoundException
