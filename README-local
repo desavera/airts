@@ -36,6 +36,9 @@ As a rule of thumb for any system architecture the low coupling and high cohesio
 
 As the system consists of a Web Application developed as a SAAS (i.e. Software as a Service) architecture, a proper solution for cohesive services in a client x server paradigma is necessary. We do not want to mix presentation layout user interface logic with business logic so that requirements like REQ_OPER_SERVER_FLEX_ARCH for enabling mobile apps without any modification suggests and justify the MVC pattern as well as this framework usage.
 
+- Jersey
+
+Jersey just a interface to use JAX-rs in more easier way. JAX-RS don't provided servlet but Jersey does. Jersey provides a library to implement Restful webservices in a Java servlet container, Jersey provides a servlet implementation which scans predefined classes to identify RESTful resources. In your web.xml configuration file your register this servlet for your web application.Jersey internally uses Jackson for Json Handling, so it will be used to marshal pojo objects to JSON.
 
 3- Installation instructions
 

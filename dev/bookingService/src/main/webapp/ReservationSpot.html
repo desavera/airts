@@ -1,0 +1,227 @@
+<html>  
+  <head>    
+    
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>  
+      
+    <title>AngularJS $http Rest example</title>    
+ <script type="text/javascript">  
+            var app = angular.module("ReservationSpotManager", []);  
+           
+            //Controller Part  
+            app.controller("ReservationSpotController", function($scope, $http) {  
+           
+                 
+                $scope.spots = [];  
+                $scope.spotForm = {  
+                    id : -1,  
+                    name : "",  
+                    code : ""  
+                };  
+           
+                //Now load the data from server  
+                _refreshSpotData();  
+           
+                //HTTP POST/PUT methods for add/edit spot   
+                // with the help of id, we are going to find out whether it is put or post operation  
+                  
+                $scope.submitSpot = function() {  
+           
+                    var method = "";  
+                    var url = "";  
+                    if ($scope.spotForm.id == -1) {  
+                        //Id is absent in form data, it is create new spot operation  
+                        method = "POST";  
+                        url = 'rest/reservationspots';  
+                    } else {  
+                        //Id is present in form data, it is edit spot operation  
+                        method = "PUT";  
+                        url = 'rest/reservationspots';  
+                    }  
+           
+                    $http({  
+                        method : method,  
+                        url : url,  
+                        data : angular.toJson($scope.spotForm),  
+                        headers : {  
+                            'Content-Type' : 'application/json'  
+                        }  
+                    }).then( _success, _error );  
+                };  
+           
+                //HTTP DELETE- delete spot by Id  
+                $scope.deleteSpot = function(spot) {  
+                    $http({  
+                        method : 'DELETE',  
+                        url : 'rest/reservationspots/' + spot.id  
+                    }).then(_success, _error);  
+                };  
+   
+             // In case of edit, populate form fields and assign form.id with spot id  
+                $scope.editSpot = function(spot) {  
+                    
+                    $scope.spotForm.name = spot.name;  
+                    $scope.spotForm.code = spot.code;  
+                    $scope.spotForm.id = spot.id;  
+                };  
+           
+                /* Private Methods */  
+                //HTTP GET- get all spots collection  
+                function _refreshSpotData() {  
+                    $http({  
+                        method : 'GET',  
+                        url : 'http://localhost:8080/bookingService/rest/reservationspots'  
+                    }).then(function successCallback(response) {  
+                        $scope.spots = response.data;  
+                    }, function errorCallback(response) {  
+                        console.log(response.statusText);  
+                    });  
+                }  
+           
+                function _success(response) {  
+                    _refreshSpotData();  
+                    _clearFormData()  
+                }  
+           
+                function _error(response) {  
+                    console.log(response.statusText);  
+                }  
+           
+                //Clear the form  
+                function _clearFormData() {  
+                    $scope.spotForm.id = -1;  
+                    $scope.spotForm.name = "";  
+                    $scope.spotForm.code = "";  
+                  
+                };  
+            });  
+        </script>  
+        <style>  
+             
+       .blue-button{  
+     background: #25A6E1;  
+     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#25A6E1',endColorstr='#188BC0',GradientType=0);  
+     padding:3px 5px;  
+     color:#fff;  
+     font-family:'Helvetica Neue',sans-serif;  
+     font-size:12px;  
+     border-radius:2px;  
+     -moz-border-radius:2px;  
+     -webkit-border-radius:4px;  
+     border:1px solid #1A87B9  
+           }       
+  
+       .red-button{  
+    background: #CD5C5C;  
+  
+    padding:3px 5px;  
+    color:#fff;  
+    font-family:'Helvetica Neue',sans-serif;  
+    font-size:12px;  
+    border-radius:2px;  
+    -moz-border-radius:2px;  
+    -webkit-border-radius:4px;  
+    border:1px solid #CD5C5C  
+           }        
+  
+       table {  
+           font-family: "Helvetica Neue", Helvetica, sans-serif;  
+           width: 50%;  
+       }  
+  
+       caption {  
+           text-align: left;  
+           color: silver;  
+           font-weight: bold;  
+           text-transform: uppercase;  
+           padding: 5px;  
+       }  
+  
+       th {  
+           background: SteelBlue;  
+           color: white;  
+       }  
+  
+  
+       tbody tr:nth-child(even) {  
+           background: WhiteSmoke;  
+       }  
+  
+       tbody tr td:nth-child(2) {  
+           text-align:center;  
+       }  
+  
+       tbody tr td:nth-child(3),  
+       tbody tr td:nth-child(4) {  
+           text-align: center;  
+           font-family: monospace;  
+       }  
+  
+       tfoot {  
+           background: SeaGreen;  
+           color: white;  
+           text-align: right;  
+       }  
+  
+       tfoot tr th:last-child {  
+           font-family: monospace;  
+       }  
+  
+       td,th{  
+            border: 1px solid gray;  
+            width: 25%;  
+            text-align: left;  
+            padding: 5px 10px;  
+        }  
+            
+              
+              
+        </style>  
+    <head>  
+    <body ng-app="ReservationSpotManager" ng-controller="ReservationSpotController">  
+         <h1>  
+           AngularJS Restful web services example using $http  
+        </h1>   
+        <form ng-submit="submitSpot()">  
+            <table>  
+                 
+                <tr>  
+                    <th colspan="2">Add/Edit spot</th>  
+                 </tr>  
+                <tr>  
+                    <td>Spot Name</td>  
+                    <td><input type="text" ng-model="spotForm.name" /></td>  
+                </tr>  
+                <tr>  
+                    <td>Spot Code</td>  
+                    <td><input type="text" ng-model="spotForm.code"  /></td>  
+                </tr>  
+                <tr>  
+                    <td colspan="2"><input type="submit" value="Submit" class="blue-button" /></td>  
+                </tr>  
+            </table>  
+        </form>  
+        <table>  
+            <tr>  
+                
+                <th>Spot Name</th>  
+                <th>Spot Code</th>  
+                <th>Operations</th>  
+                 
+            </tr>  
+   
+            <tr ng-repeat="spot in spots">  
+                 
+    <td>{{ spot.name }}</td>  
+    <td>{{ spot.code }}</td>    
+                  
+                <td><a ng-click="editSpot(spot)" class="blue-button">Edit</a> | <a ng-click="deleteSpot(spot)" class="red-button">Delete</a></td>  
+            </tr>  
+   
+        </table>  
+   
+         
+   
+         
+        
+  </body>  
+</html> 
