@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 public class ReservationSpotController {
 		  	 
 	   
+	 // autowire for Spring or injection for Unit
 	 ReservationSpotService service=new ReservationSpotService();  
 	   
 	 @GET  

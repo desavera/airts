@@ -16,7 +16,7 @@ public class ReservationSpot {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int spot_id;
 	
 	@Column(name = "spot_name", nullable = false)
 	private String name;
@@ -28,16 +28,16 @@ public class ReservationSpot {
 	
 	public ReservationSpot(int id,String name,String code) {
 		
-		this.id = id;
+		this.spot_id = id;
 		this.name = name;
 		this.code = code;
 	}
 	
 	public int getId() {
-		return id;
+		return spot_id;
 	}
 	public void setId(int id) {
-		this.id = id;
+		this.spot_id = id;
 	}
 	public String getName() {
 		return name;
@@ -57,7 +57,7 @@ public class ReservationSpot {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + id;
+        result = prime * result + spot_id;
         return result;
     }
  
@@ -70,14 +70,14 @@ public class ReservationSpot {
         if (!(obj instanceof ReservationSpot))
             return false;
         ReservationSpot other = (ReservationSpot) obj;
-        if (id != other.id)
+        if (spot_id != other.spot_id)
             return false;
         return true;
     }
  
     @Override
     public String toString() {
-        return "ReservationSpot [id=" + id + ", Name=" + name + ", Code="
+        return "ReservationSpot [id=" + spot_id + ", Name=" + name + ", Code="
                 + code + "]";
     }
  	

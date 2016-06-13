@@ -6,7 +6,7 @@
 <hibernate-mapping>
    <class name="ReservationSpot" table="reservation_spot">
       <meta attribute="class-description">
-         This class contains the employee detail. 
+         This class contains the ReservationSpot detail. 
       </meta>
       <id name="id" type="int" column="id">
          <generator class="native"/>
