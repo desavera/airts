@@ -38,7 +38,7 @@ As the system consists of a Web Application developed as a SAAS (i.e. Software a
 
 - Jersey
 
-Jersey just a interface to use JAX-rs in more easier way. JAX-RS don't provided servlet but Jersey does. Jersey provides a library to implement Restful webservices in a Java servlet container, Jersey provides a servlet implementation which scans predefined classes to identify RESTful resources. In your web.xml configuration file your register this servlet for your web application.Jersey internally uses Jackson for Json Handling, so it will be used to marshal pojo objects to JSON.
+Jersey just a interface to use JAX-RS in more easier way. JAX-RS don't provided servlet but Jersey does. Jersey provides a library to implement Restful webservices in a Java servlet container, Jersey provides a servlet implementation which scans predefined classes to identify RESTful resources. In your web.xml configuration file your register this servlet for your web application.Jersey internally uses Jackson for Json Handling, so it will be used to marshal pojo objects to JSON.
 
 3- Installation instructions
 
@@ -72,7 +72,15 @@ Finally, in terms of infrastructure I assume the system tester with admin access
 
 7- General issues
 
-This is a mock system.There are several complexities of a real time Airline Tickets Reservation System would have to take care of (ex : multiple stops flights) that were ignored by the architecture and implementation also.
+- This is a mock system.
+
+- There was no time for implementing the majority of the system features.The focus was to build a framework with implementation templates to be referenced by Junior programmers. 
+
+REFERENCES :
+
+http://www.codingpedia.org/ama/tutorial-rest-api-design-and-implementation-in-java-with-jersey-and-spring/
+http://www.codingpedia.org/ama/java-persistence-example-with-spring-jpa2-and-hibernate/#42_JPA_resources
+
 
 8- Feedback
 

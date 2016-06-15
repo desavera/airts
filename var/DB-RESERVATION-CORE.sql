@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS reservation
     reservation_transaction BIGINT,
     reservation_number_of_seats INT,
     reservation_seats CHARACTER(250),
+    reservation_timestamp DATE,
     PRIMARY KEY(res_id)
 );
 
@@ -39,19 +40,17 @@ CREATE TABLE IF NOT EXISTS reservation_owner
     PRIMARY KEY(owner_id)
 );
 
-CREATE TABLE IF NOT EXISTS reservation_schedule
+CREATE TABLE IF NOT EXISTS schedule
 (
     schedule_id BIGINT,
-    schedule_timestamp DATE,
     schedule_departure_time DATE,
     schedule_origin INT,
     schedule_destiny INT,
     schedule_available_seats CHARACTER(250),
-    schedule_timezone INT,
-    schedule_arriving_estimate_time DATE    
+    schedule_arriving_time DATE    
 );
 
-CREATE TABLE IF NOT EXISTS reservation_spot
+CREATE TABLE IF NOT EXISTS schedule_spot
 (
     spot_id INT NOT NULL,
     spot_name CHARACTER(50),
@@ -109,6 +108,12 @@ CREATE TABLE IF NOT EXISTS reservation_message_type
     PRIMARY KEY(message_type_id)
 );
 
+CREATE TABLE IF NOT EXISTS reservation_schedule
+(
+    res_id BIGINT,
+    schedule_id BIGINT    
+);
+
 
 # Create FKs
 ALTER TABLE reservation_state
@@ -126,19 +131,14 @@ ALTER TABLE reservation
     REFERENCES reservation_state(state_id)
 ;
     
-ALTER TABLE reservation
-    ADD    FOREIGN KEY (reservation_schedule)
-    REFERENCES reservation_schedule(schedule_id)
-;
-    
-ALTER TABLE reservation_schedule
+ALTER TABLE schedule
     ADD    FOREIGN KEY (schedule_origin)
-    REFERENCES reservation_spot(spot_id)
+    REFERENCES schedule_spot(spot_id)
 ;
     
-ALTER TABLE reservation_schedule
+ALTER TABLE schedule
     ADD    FOREIGN KEY (schedule_destiny)
-    REFERENCES reservation_spot(spot_id)
+    REFERENCES schedule_spot(spot_id)
 ;
     
 ALTER TABLE reservation_state
@@ -181,5 +181,14 @@ ALTER TABLE reservation_message_log
     REFERENCES reservation_message_type(message_type_id)
 ;
     
-
+ALTER TABLE schedule
+    ADD    FOREIGN KEY (schedule_id)
+    REFERENCES reservation_schedule(schedule_id)
+;
+    
+ALTER TABLE reservation
+    ADD    FOREIGN KEY (res_id)
+    REFERENCES reservation_schedule(res_id)
+;
+    
 
