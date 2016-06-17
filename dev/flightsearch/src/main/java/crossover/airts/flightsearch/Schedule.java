@@ -1,7 +1,13 @@
 package crossover.airts.flightsearch;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
  
 public class Schedule {
@@ -13,6 +19,11 @@ public class Schedule {
 	private String departuring;
 	private int nseats;
 	private double costs;
+	
+	// the default date format
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+	final Logger logger = LogManager.getLogger(Schedule.class); 
 
 
 	public Schedule() {}
@@ -103,19 +114,52 @@ public class Schedule {
         return true;
     }
 
-	public boolean isDeparturingDay(String dateString) {
+	public boolean isDeparturingDate(String dateString) {
 		
-		 Date thisDeparture = new Date(Date.parse(this.getDeparturing())); 
-		 Date queryDeparture = new Date(Date.parse(dateString));
 		 
-		 // TODO : replace for Calendar		 
-		 if ((thisDeparture.getDay() == queryDeparture.getDay()) &&
-			 (thisDeparture.getMonth() == queryDeparture.getMonth()) &&
-			 (thisDeparture.getYear() == queryDeparture.getYear()))
-			 
-			 return true;			 			 			 			
+		try {
+			
+			Date thisDeparture = sdf.parse(this.getDeparturing());
+			Date queryDeparture = sdf.parse(dateString.substring(0,10) + " 00:00:00");
+ 
+			Calendar calendar = Calendar.getInstance();
+			
+			calendar.setTime(thisDeparture);
+			
+			int tyear       = calendar.get(Calendar.YEAR);
+			int tmonth      = calendar.get(Calendar.MONTH); 
+			int tdayOfMonth = calendar.get(Calendar.DAY_OF_MONTH); 			
+		    		
+			calendar.setTime(queryDeparture);
+			
+			int qyear       = calendar.get(Calendar.YEAR);
+			int qmonth      = calendar.get(Calendar.MONTH); 
+			int qdayOfMonth = calendar.get(Calendar.DAY_OF_MONTH); 					          
+			
+			
+			if ((tdayOfMonth == qdayOfMonth) && (tmonth == qmonth) && (tyear == qyear))
+				 return true;			 			 			 			
+
+			
+		} catch (ParseException e) {
+			
+			logger.error("Error parsing date string : " + dateString + e);			
+		} 
+		 		 				 		
 		 
 		return false;
 	}
+	// for debugging purposes
+	public String toString() {
 	
+		StringBuffer str = new StringBuffer();
+		str.append("Id : " + id + '\n');
+		str.append("Origin : " + origin + '\n');
+		str.append("Destiny : " + destiny + '\n');
+		str.append("Departuring : " + departuring + '\n');
+		str.append("N of Seats : " + nseats + '\n');		
+		str.append("Costs : " + costs + '\n');
+		
+		return str.toString();
+	}
 }

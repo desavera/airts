@@ -15,8 +15,8 @@
                 $scope.returningSchedules = [];  
                 $scope.selectedSchedules = [];  
                 $scope.schedules = [];  
-                $scope.originSchedule;  
-                $scope.destinySchedule;  
+                $scope.originBookingSchedule;  
+                $scope.destinyBookingSchedule;  
                 $scope.scheduleForm = {  
                     origin : "",
                     destiny : "",  
@@ -46,20 +46,20 @@
 
                 $scope.selectOriginSchedule = function(schedule) {
 
-			if ($scope.originSchedule)
-				$scope.unselectSchedule($scope.originSchedule);
+			if ($scope.originBookingSchedule)
+				$scope.unselectSchedule($scope.originBookingSchedule);
 
-			$scope.originSchedule = schedule;
-			$scope.selectedSchedules.push($scope.originSchedule);
+			$scope.originBookingSchedule = schedule;
+			$scope.selectedSchedules.push($scope.originBookingSchedule);
                 };  
    
                 $scope.selectDestinySchedule = function(schedule) {
 
-			if ($scope.destinySchedule)
-				$scope.unselectSchedule($scope.destinySchedule);
+			if ($scope.destinyBookingSchedule)
+				$scope.unselectSchedule($scope.destinyBookingSchedule);
 
-			$scope.destinySchedule = schedule;
-			$scope.selectedSchedules.push($scope.destinySchedule);
+			$scope.destinyBookingSchedule = schedule;
+			$scope.selectedSchedules.push($scope.destinyBookingSchedule);
                 };  
 
                 $scope.unselectSchedule = function(schedule) {
@@ -68,6 +68,9 @@
                 };  
 
                 $scope.fillScheduleData = function() {  
+
+			_clearSelectedSchedules();
+
 			$http({
 			    method: 'POST',
 			    url: 'http://localhost:8080/flightsearch/rest/fsearch',
@@ -81,7 +84,7 @@
                         $scope.schedules = response.data;  
            		angular.forEach($scope.schedules, function(schedule) {
 
-				if (schedule.origin.substring(0,3) === $scope.scheduleForm.origin)
+				if (schedule.origin.substring(0,3).toUpperCase() === $scope.scheduleForm.origin.toUpperCase())
 					$scope.departureSchedules.push(schedule);
 				else
 					$scope.returningSchedules.push(schedule);
@@ -91,7 +94,10 @@
                         console.log(response.statusText);  
                     });  
                 }  
-           
+
+		//
+		// PRIVATE METHODS
+		//
                 function _success(response) {  
                 }  
            
@@ -107,9 +113,16 @@
                     $scope.scheduleForm.departuring = "";                    
                     $scope.scheduleForm.returning = "";                    
                     $scope.scheduleForm.npassengers = "";
-                    
-                  
                 };  
+	
+		function _clearSelectedSchedules() {
+
+		    $scope.departureSchedules = [];
+		    $scope.returningSchedules = [];
+		    $scope.selectedSchedules = [];
+		}
+			
+
             });  
         </script>  
         <style>  
@@ -204,12 +217,12 @@
               
               
     </style>  
-    <head>  
+    </head>  
     <body ng-app="FlightSearchManager" ng-controller="FlightSearchController">  
          <h1>  
            Air-TS - Book your trip !   
         </h1>   
-        <form ng-submit="fillScheduleData()">  
+        <form name="bookingForm" ng-submit="fillScheduleData()">  
             <table>  
                  
                 <tr>  
@@ -217,23 +230,23 @@
                  </tr>  
                 <tr>  
                     <td>Origin</td>  
-                    <td><input type="text" ng-model="scheduleForm.origin" class="spotcode" ng-minlength="3" ng-maxlength="3"/></td>  
+                    <td><input required type="text" ng-model="scheduleForm.origin" class="spotcode" ng-minlength="3" ng-maxlength="3" style="text-transform:uppercase"/></td>  
                 </tr>  
                 <tr>  
                     <td>Destiny</td>  
-                    <td><input type="text" ng-model="scheduleForm.destiny" class="spotcode" ng-minlength="3" ng-maxlength="3"/></td>  
+                    <td><input required type="text" ng-model="scheduleForm.destiny" class="spotcode" ng-minlength="3" ng-maxlength="3" style="text-transform:uppercase"/></td>  
                 </tr>
                 <tr>  
-                    <td>Departuring Date (DD/MM/YYYY)</td>  
-                    <td><input type="text" ng-model="scheduleForm.departuring"  /></td>  
+                    <td>Departuring Date</td>  
+                    <td><input required type="date" name="input" ng-model="scheduleForm.departuring" placeholder="yyyy-MM-dd" min="2016-01-01" max="2200-12-31"/></td>  
                 </tr>  
                 <tr>  
-                    <td>Returning Date (DD/MM/YYYY)</td>  
-                    <td><input type="text" ng-model="scheduleForm.returning"  /></td>  
+                    <td>Returning Date</td>  
+                    <td><input required type="date" name="input" ng-model="scheduleForm.returning" placeholder="yyyy-MM-dd" min="2016-01-01" max="2200-12-31"/></td>  
                 </tr>  
                 <tr>  
                     <td>Number of Passengers</td>  
-                    <td><input type="text" ng-model="scheduleForm.npassengers"  /></td>  
+                    <td><input required type="text" ng-model="scheduleForm.npassengers"  /></td>  
                 </tr>  
                 <tr>  
                     <td colspan="2"><input type="submit" value="Submit" class="blue-button" /></td>  

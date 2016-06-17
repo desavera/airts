@@ -20,21 +20,38 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-    <dependency>  
-      <groupId>com.sun.jersey</groupId>  
-      <artifactId>jersey-servlet</artifactId>  
-      <version>1.19</version>  
-    </dependency>  
-    <dependency>  
-      <groupId>com.sun.jersey</groupId>  
-      <artifactId>jersey-json</artifactId>  
-      <version>1.19</version>  
-    </dependency>   
-    <dependency>  
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-servlet-core</artifactId>
+      <version>2.13</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-servlet</artifactId>
+      <version>2.13</version>
+    </dependency>
+  	<dependency>  
       <groupId>commons-logging</groupId>  
       <artifactId>commons-logging</artifactId>  
       <version>1.2</version>  
-    </dependency> 
+    </dependency>
+	<dependency>
+    	<groupId>org.glassfish.hk2</groupId>
+    	<artifactId>hk2-locator</artifactId>
+    	<version>2.4.0</version>
+    	<exclusions>
+    		<exclusion>
+    			<artifactId>javax.inject</artifactId>
+    			<groupId>javax.inject</groupId>
+    		</exclusion>
+    	</exclusions>
+	</dependency> 	
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>

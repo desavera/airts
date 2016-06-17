@@ -66,5 +66,17 @@ public class FlightSearchQuery {
 		this.npassengers = npassengers;
 	}
 
+	// for debugging purposes
+	public String toString() {
+	
+		StringBuffer str = new StringBuffer();
+		str.append("Origin : " + origin + '\n');
+		str.append("Destiny : " + destiny + '\n');
+		str.append("Departuring : " + departuring + '\n');
+		str.append("Returning : " + returning + '\n');
+		str.append("N of Passengers : " + npassengers + '\n');		
+		
+		return str.toString();
+	}
 
 }

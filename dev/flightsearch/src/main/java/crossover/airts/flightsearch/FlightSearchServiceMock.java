@@ -23,10 +23,10 @@ public class FlightSearchServiceMock {
   {  
 	  
    entityIdMap=new HashMap<Integer,Schedule>();      
-   Schedule mock1=new Schedule(1,"01/01/2017 13:00","GIG - Rio de Janeiro","JFK - New York",300,250.2);  
-   Schedule mock2=new Schedule(2,"01/01/2017 16:00","GIG - Rio de Janeiro","JFK - New York",500,300.0);   
-   Schedule mock3=new Schedule(3,"02/01/2017 10:00","FJK - New York","GIG - Rio de Janeiro",300,312.8);
-   Schedule mock4=new Schedule(4,"02/01/2017 13:00","JFK - New York","GIG - Rio de Janeiro",500,533.1);
+   Schedule mock1=new Schedule(1,"2017-01-01 13:00:00","GIG - Rio de Janeiro","JFK - New York",300,250.2);  
+   Schedule mock2=new Schedule(2,"2017-01-01 16:00:00","GIG - Rio de Janeiro","JFK - New York",500,300.0);   
+   Schedule mock3=new Schedule(3,"2017-03-01 10:00:00","JFK - New York","GIG - Rio de Janeiro",150,133.1);
+   Schedule mock4=new Schedule(4,"2017-02-01 16:00:00","JFK - New York","GIG - Rio de Janeiro",500,533.1);
      
    entityIdMap.put(1,mock1);  
    entityIdMap.put(2,mock2);  
@@ -96,25 +96,40 @@ public class FlightSearchServiceMock {
 	 
 	 List<Schedule> entities = new ArrayList<Schedule>(entityIdMap.values());  
 	 
-	 logger.debug("Quering schedules for : " + query);
+	 logger.debug("Quering schedules for : " + '\n' + query);
 	 
-	 for (Schedule entity:entities)
+	 for (Schedule entity:entities) {
 		 
 
-		 // for a match we need to check the spot codes, a same day comparison as well as checking the number of seats available
-		 if ((entity.getOrigin().startsWith(query.getOrigin()) ||
-			  entity.getDestiny().startsWith(query.getDestiny())) &&
-			 (entity.isDeparturingDay(query.getDeparturing()) || 
-			  entity.isDeparturingDay(query.getReturning())) &&
-			 (entity.getNseats() >= query.getNpassengers())) {
-			
-			 logger.debug("Matched query for : " + entity);
-			 matchList.add(entity);
+		 // for a match we need to check the spot codes, a same day comparison as well as checking the number of seats available		 
+		 boolean scheduleMatch = false;
+		 
+		 if ((entity.getOrigin().toUpperCase().startsWith(query.getOrigin().toUpperCase())) &&
+			 (entity.getDestiny().toUpperCase().startsWith(query.getDestiny().toUpperCase()))) {			
+		
+			  if (entity.isDeparturingDate(query.getDeparturing()))  
+						
+				  scheduleMatch = true;
+				
+		 } else
+				 
+		 if ((entity.getOrigin().toUpperCase().startsWith(query.getDestiny().toUpperCase())) &&
+			 (entity.getDestiny().toUpperCase().startsWith(query.getOrigin().toUpperCase()))) {
+			 
+			 if (entity.isDeparturingDate(query.getReturning())) 
+		 
+				  scheduleMatch = true;
 			 
 		 }
+							 
+			 			  
+		 if ((scheduleMatch) && (entity.getNseats() >= query.getNpassengers())) {
+			 logger.debug("Matched query for : " + entity);
+			 matchList.add(entity);			 
+		 }			
+	}
 		 		 	 	 
-	 matchList.addAll(entities);
-	 return matchList;
+	return matchList;
  }
  
  

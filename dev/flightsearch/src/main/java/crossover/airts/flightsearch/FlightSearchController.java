@@ -21,24 +21,12 @@ public class FlightSearchController {
 	 final FlightSearchServiceMock service=new FlightSearchServiceMock();
 	 final Logger logger = LogManager.getLogger(FlightSearchController.class);
 	   	 
-	 @POST  	 
-	 //@Path("/{origin}/{destiny}/{departuring}/{returning}/{npassengers}")  	 
+	 @POST  	  	
 	 @Produces(MediaType.APPLICATION_JSON)  
-/*	 public List<Schedule> getSchedulesByQueryParams(@PathParam("origin") String origin,
-							 @PathParam("destiny") String destiny,
-							 @PathParam("departuring") String departuring,
-							 @PathParam("returning") String returning,
-							 @PathParam("npassengers") int npassengers)  
-*/
 	 public List<Schedule> getSchedulesByQueryParams(FlightSearchQuery query)
-	 {  
-
-		//FlightSearchQuery query = new FlightSearchQuery(origin,destiny,departuring,returning,npassengers);
-		//FlightSearchQuery query = new FlightSearchQuery("GIG","JFK","01/01/2017","01/02/2017",1);
-		 
+	 {  		
 		logger.info("GET method hit for getScheduleByQueryParams()... with query = " + query);		 		 
-		return service.getByQueryParams(query);
- 
+		return service.getByQueryParams(query); 
 	 }  	      
 
 	 @PUT  

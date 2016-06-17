@@ -5,8 +5,8 @@
  version="3.0">  
  <display-name>Archetype Created Web Application</display-name>  
  <servlet>  
-  <servlet-name>jersey-serlvet</servlet-name>  
-  <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>  
+  <servlet-name>Jersey REST Service</servlet-name>  
+  <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>  
   <init-param>  
    <param-name>com.sun.jersey.config.property.packages</param-name>  
    <param-value>crossover.airts.flightsearch</param-value>  
@@ -19,7 +19,7 @@
   <load-on-startup>1</load-on-startup>  
  </servlet>  
  <servlet-mapping>  
-  <servlet-name>jersey-serlvet</servlet-name>  
+  <servlet-name>Jersey REST Service</servlet-name>  
   <url-pattern>/rest/*</url-pattern>  
  </servlet-mapping>  
 </web-app>  

@@ -18,7 +18,7 @@ As a JAVA stack solution and attending to the work scope we will use AWS (i.e. A
 
 A production environment infrastructure for high scaling systems should take advantage of Linux system administration tools as the infrastructure should ideally enable remote access for system administrators. The EC2 (i.e. Ellastic Computing) was chosen with the minimum resources configured in order to enable the system test for a development environment (i.e. Ubuntu Server 14.04 LTS (HVM), SSD Volume Type). Enabling a full production environment is a matter of enhancing the EC2 services with load balancing for each service module as proposed by the architecture for a production system scenario. The proper installation of this infrastructure is a prerequisite for testing the system.
 
-- Tomcat
+- Apache Tomcat
 
 Tomcat is a very simple, robust and easy to install Application Server in Linux systems. Our choice for model mapping (i.e. Hibernate) has being quite tested with Tomcat and in case we decide to go to a true production infrastructure the service packages for AIRTS deployment should be compatible to all major robust Application Servers.The recommended minimum release for Tomcat is 7. The proper installation of this infrastructure is a prerequisite for testing the system.
 
@@ -26,17 +26,42 @@ Tomcat is a very simple, robust and easy to install Application Server in Linux 
 
 MySQL is a natural choice for simplicity and it addresses perfectly the goal for a Linux server infrastructure for our system test in a development environment. The RDS (i.e. Relational Database Service) was chosen and all minimum resources configured (i.e. Dev/Test instances with 5Gb disk space).The proper installation of this infrastructure is a prerequisite for testing the system.
 
-- Hibernate
+- Hibernate and JPA
+
+- Spring Frameworks
+
+starters with embedded containers (ex : Apache Tomcat)
+
+
+- Jersey
+
+Jersey just a interface to use JAX-RS in more easier way. JAX-RS don't provided servlet but Jersey does. Jersey provides a library to implement Restful webservices in a Java servlet container, Jersey provides a servlet implementation which scans predefined classes to identify RESTful resources. In your web.xml configuration file your register this servlet for your web application.Jersey internally uses Jackson for Json Handling, so it will be used to marshal pojo objects to JSON.
+
+- Docker.io
+
+
+
 
 
 2- Design patterns and principles used
 
 As a rule of thumb for any system architecture the low coupling and high cohesion of system modules are the main goals.The first design pattern used is the Model, View and Controller (i.e. MVC) pattern. 
 
-- Spring MVC
+- MVC
 
 As the system consists of a Web Application developed as a SAAS (i.e. Software as a Service) architecture, a proper solution for cohesive services in a client x server paradigma is necessary. We do not want to mix presentation layout user interface logic with business logic so that requirements like REQ_OPER_SERVER_FLEX_ARCH for enabling mobile apps without any modification suggests and justify the MVC pattern as well as this framework usage.
 
+- REST
+
+
+
+- Microservices architecture
+
+fine-grained
+
+- API Gateway
+
+A RESTful microservices architecture with a API gateway is a Mediator design pattern.
 
 
 3- Installation instructions
