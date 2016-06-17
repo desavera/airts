@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.crossover.airts</groupId>
-	<artifactId>booking</artifactId>
+	<artifactId>Booking</artifactId>
 	<version>1.0.0</version>
 	<packaging>war</packaging>	
 	<parent>
@@ -38,7 +38,7 @@
 	</properties>
 
 	<build>
-		<finalName>booking</finalName>
+		<finalName>Booking</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>

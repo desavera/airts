@@ -34,7 +34,6 @@ Docker.io is a container image manager where we are able to configure a whole in
 
 MySQL is an open source natural choice for simplicity and it addresses perfectly the scenario exposed in the trial.
 
-
 - Apache Tomcat and ActiveMQ
 
 Tomcat is a very simple, robust and easy to install Application Server in Linux systems and it addresses perfectly the scenario exposed in the trial as well as offers solid integration with both MySQL and Spring frameworks.
@@ -51,17 +50,21 @@ The build engine of our choice was Maven. Even though quite a verbosous tool it 
 
 2- Design patterns and principles used
 
-As a rule of thumb for any system architecture the low coupling and high cohesion of system modules are the main goals.The first design pattern used is the Model, View and Controller (i.e. MVC) pattern. 
+
+As a rule of thumb for any system architecture the low coupling and high cohesion of system modules are the main goals. Most patterns and principles adopted aim these two concepts.
+
 
 - MVC
 
-As the system consists of a Web Application developed as a SAAS (i.e. Software as a Service) architecture, a proper solution for cohesive services in a client x server paradigma is necessary. We do not want to mix presentation layout user interface logic with business logic so that requirements like REQ_OPER_SERVER_FLEX_ARCH for enabling mobile apps without any modification suggests and justify the MVC pattern as well as this framework usage.
+The first design pattern used is the Model, View and Controller (i.e. MVC) pattern.Basically we do not want to mix presentation layout user interface logic with business logic so that requirements like REQ_OPER_SERVER_FLEX_ARCH for enabling mobile apps without any modification suggests and justify the MVC pattern as the View layer shall be adapted for specific clients.
 
 - RESTful API with an API Gateway
 
 A RESTful microservices architecture with a API gateway is a Mediator design pattern.
 
 - Microservices architecture
+
+As the system consists of a Web Application developed as a set of  a SAAS (i.e. Software as a Service) architecture, a proper solution for cohesive services in a client x server paradigma is necessary. We do not want to mix presentation layout user interface logic with business logic so that requirements like REQ_OPER_SERVER_FLEX_ARCH for enabling mobile apps without any modification suggests and justify the MVC pattern as well as this framework usage.
 
 fine-grained
 
