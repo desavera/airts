@@ -1,45 +1,51 @@
 CrossOver
 Implementation Guidelines for Airline Ticket Reservation System
 Author : Mário de Sá Vera
-Date : June 11th 2016
+Date : June 17th 2016
 
 
-This document presents a detailed description of the implementation process of the proposed Airline Ticket Reservation System as well as installation instructions for system testing. The implementation follows the design document located at :
+	This document presents a detailed description of the implementation process of the proposed Airline Ticket Reservation System (named Air-TS) as well as installation instructions for system testing. The implementation follows the design document located at :
 
 var/doc/DESAVERA-DESIGN-DOCUMENT-2016-05.pdf
 
-in order to install the system , named AIRTS (for Airline Ticket Reservation System) from now on , follow instructions (1),(3) and (4) and you should be able to run the application properly. For a full understanding of the technical strategies see items (2) and (5).
+	The installation instructions are divided in two different scenarios for a Junior Developer as a target for taking along this implementation (i.e. a development environment) and a testing environment using cloud computing for all system architecture modules.
 
 1- Technologies integrated
 
-As a JAVA stack solution and attending to the work scope we will use AWS (i.e. Amazon Web Services) cloud services infrastructure with the following technologies for AIRTS implementation :
+	As a JAVA stack solution and attending to the work scope we will use the following technologies for the system implementation :
 
-- Linux server
+- Linux 
 
-A production environment infrastructure for high scaling systems should take advantage of Linux system administration tools as the infrastructure should ideally enable remote access for system administrators. The EC2 (i.e. Ellastic Computing) was chosen with the minimum resources configured in order to enable the system test for a development environment (i.e. Ubuntu Server 14.04 LTS (HVM), SSD Volume Type). Enabling a full production environment is a matter of enhancing the EC2 services with load balancing for each service module as proposed by the architecture for a production system scenario. The proper installation of this infrastructure is a prerequisite for testing the system.
+Both the development and testing environment will run on Linux Ubuntu flavour as the operating system. This is due to the facilities offered for both developer and operational profiles (i.e. devops). Linux also offers a very stable and open source compatible environment as most of the technologies used in both development and testing environment with Amazon Web Services.
 
-- Apache Tomcat
+- Amazon Web Services (AWS)
 
-Tomcat is a very simple, robust and easy to install Application Server in Linux systems. Our choice for model mapping (i.e. Hibernate) has being quite tested with Tomcat and in case we decide to go to a true production infrastructure the service packages for AIRTS deployment should be compatible to all major robust Application Servers.The recommended minimum release for Tomcat is 7. The proper installation of this infrastructure is a prerequisite for testing the system.
+Amazon services for cloud computing were used for testing environment infrastructure as it offers from a no costs infrastructure up to full production services for high scaling systems for eventual future options. The following services were used from AWS :
 
-- MySQL
+* EC2 was chosen with the minimum resources configured in order to enable the system testing environment (i.e. Ubuntu Server 14.04 LTS (HVM), SSD Volume Type).
 
-MySQL is a natural choice for simplicity and it addresses perfectly the goal for a Linux server infrastructure for our system test in a development environment. The RDS (i.e. Relational Database Service) was chosen and all minimum resources configured (i.e. Dev/Test instances with 5Gb disk space).The proper installation of this infrastructure is a prerequisite for testing the system.
-
-- Hibernate and JPA
-
-- Spring Frameworks
-
-starters with embedded containers (ex : Apache Tomcat)
-
-
-- Jersey
-
-Jersey just a interface to use JAX-RS in more easier way. JAX-RS don't provided servlet but Jersey does. Jersey provides a library to implement Restful webservices in a Java servlet container, Jersey provides a servlet implementation which scans predefined classes to identify RESTful resources. In your web.xml configuration file your register this servlet for your web application.Jersey internally uses Jackson for Json Handling, so it will be used to marshal pojo objects to JSON.
+other services like RDS and SNS for database and messaging should be also integrated in the future.As of the time of this writing these services will be installed as part of the system images configured for deployment with Docker.io.
 
 - Docker.io
 
+Docker.io is a container image manager where we are able to configure a whole infrastructure with all services integrated so that a deployment of a testing or production environment can be done with no configuration difference between environments.
 
+- MySQL
+
+MySQL is an open source natural choice for simplicity and it addresses perfectly the scenario exposed in the trial.
+
+
+- Apache Tomcat and ActiveMQ
+
+Tomcat is a very simple, robust and easy to install Application Server in Linux systems and it addresses perfectly the scenario exposed in the trial as well as offers solid integration with both MySQL and Spring frameworks.
+
+- Spring Frameworks
+
+Spring is a major integrator itself of several technologies. The Spring Boot project was quite helpful by providing both a JPA container for ORM as well as deployment starters with embedded containers (ex : Apache Tomcat and ActiveMQ) directly from Maven dependency declarations.
+
+- Maven
+
+The build engine of our choice was Maven. Even though quite a verbosous tool it made dependency management for the set of technologies used quite simple.
 
 
 
@@ -51,17 +57,14 @@ As a rule of thumb for any system architecture the low coupling and high cohesio
 
 As the system consists of a Web Application developed as a SAAS (i.e. Software as a Service) architecture, a proper solution for cohesive services in a client x server paradigma is necessary. We do not want to mix presentation layout user interface logic with business logic so that requirements like REQ_OPER_SERVER_FLEX_ARCH for enabling mobile apps without any modification suggests and justify the MVC pattern as well as this framework usage.
 
-- REST
+- RESTful API with an API Gateway
 
-
+A RESTful microservices architecture with a API gateway is a Mediator design pattern.
 
 - Microservices architecture
 
 fine-grained
 
-- API Gateway
-
-A RESTful microservices architecture with a API gateway is a Mediator design pattern.
 
 
 3- Installation instructions
@@ -88,7 +91,7 @@ you now have the database ready for running the AIRTS system.
 
 5- Assumptions adopted
 
-The major assumption is related to the scalability and infrastructure of the system being delivered as part of this test. In the design document I suggested using AWS EC2,RDS and so on (i.e. Amazon Web Services) infrastructure with load balanced modules to achieve high performance for each service deployed. This is a full production scenario and for simplicity and to enable the junior developers to reproduce a development environment I am not going to deploy the services in a cloud computing environment. All services will still attend to operational requirement REQ_OPER_SERVER_CLOUD_ARCH and a cloud full production environment deployment would require no change to the source code at all.
+The major assumption is related to the scalability and infrastructure of the system being delivered as part of this test. In the design document I suggested using AWS EC2,RDS and so on (i.e. Amazon Web Services) infrastructure with load balanced modules to achieve high performance for each service deployed. This is a full testing scenario and for simplicity and to enable the junior developers to reproduce a development environment I am not going to deploy the services in a cloud computing environment. All services will still attend to operational requirement REQ_OPER_SERVER_CLOUD_ARCH and a cloud full testing environment deployment would require no change to the source code at all.
 
 Finally, in terms of infrastructure I assume the system tester with admin access to a Linux Ubuntu system with MySQL installed.
 

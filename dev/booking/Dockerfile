@@ -1,3 +1,3 @@
-FROM docker/whalesay:latest
+FROM mysql
 
 MAINTAINER desavera@gmail.com
