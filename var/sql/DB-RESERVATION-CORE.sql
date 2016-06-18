@@ -11,15 +11,15 @@ USE airtsdev;
 # Create tables
 CREATE TABLE IF NOT EXISTS reservation
 (
-    res_id BIGINT NOT NULL,
+    res_id INT NOT NULL,
     reservation_owner BIGINT,
     reservation_state INT,
     reservation_departure_schedule BIGINT,
     reservation_transaction BIGINT,
-    reservation_seats CHARACTER(250),
     reservation_timestamp DATE,
     reservation_return_schedule BIGINT,
     reservation_total_costs DOUBLE,
+    reservation_nseats INT,
     PRIMARY KEY(res_id)
 );
 
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS reservation_owner
 
 CREATE TABLE IF NOT EXISTS schedule
 (
-    schedule_id BIGINT,
+    schedule_id INT,
     schedule_departure_time DATE,
     schedule_origin INT,
     schedule_destiny INT,
@@ -108,6 +108,16 @@ CREATE TABLE IF NOT EXISTS reservation_message_type
     message_type_id BIGINT NOT NULL,
     message_type_name CHARACTER(50),
     PRIMARY KEY(message_type_id)
+);
+
+CREATE TABLE IF NOT EXISTS checkout_control
+(
+    checkout_id INT NOT NULL,
+    checkout_departure_timestamp DATE,
+    checkout_departure_seats CHARACTER(250),
+    checkout_return_timestamp DATE,
+    checkout_return_seats CHARACTER(250),
+    PRIMARY KEY(checkout_id)
 );
 
 
@@ -185,6 +195,11 @@ ALTER TABLE schedule
 ALTER TABLE schedule
     ADD    FOREIGN KEY (schedule_id)
     REFERENCES reservation(reservation_return_schedule)
+;
+    
+ALTER TABLE checkout_control
+    ADD    FOREIGN KEY (checkout_id)
+    REFERENCES reservation(res_id)
 ;
     
 

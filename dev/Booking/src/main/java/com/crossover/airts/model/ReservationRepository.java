@@ -1,4 +1,4 @@
-package com.crossover.airts.booking;
+package com.crossover.airts.model;
 
 import java.util.Date;
 import java.util.List;
