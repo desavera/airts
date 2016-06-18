@@ -18,13 +18,13 @@ public class ReservationController {
 
     @RequestMapping("/bsearch/{owner_id}")
     public List<Reservation> findReservations(@PathVariable(value="owner_id") Integer owner_id) {    	
-    	List<Reservation> reports = reservationRepo.findByOwner(owner_id);
-        return reports;
+    	List<Reservation> entities = reservationRepo.findByOwner(owner_id);
+        return entities;
     }
     
     @RequestMapping("/bsearch")
     public List<Reservation> findAllReservations() {    	
-    	List<Reservation> reports = reservationRepo.findAll();
-        return reports;
+    	List<Reservation> entities = reservationRepo.findAll();
+        return entities;
     }
 }

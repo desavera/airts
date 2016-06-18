@@ -14,11 +14,12 @@ CREATE TABLE IF NOT EXISTS reservation
     res_id BIGINT NOT NULL,
     reservation_owner BIGINT,
     reservation_state INT,
-    reservation_schedule BIGINT,
+    reservation_departure_schedule BIGINT,
     reservation_transaction BIGINT,
-    reservation_number_of_seats INT,
     reservation_seats CHARACTER(250),
     reservation_timestamp DATE,
+    reservation_return_schedule BIGINT,
+    reservation_total_costs DOUBLE,
     PRIMARY KEY(res_id)
 );
 
@@ -47,7 +48,7 @@ CREATE TABLE IF NOT EXISTS schedule
     schedule_origin INT,
     schedule_destiny INT,
     schedule_available_seats CHARACTER(250),
-    schedule_arriving_time DATE    
+    schedule_costs DOUBLE    
 );
 
 CREATE TABLE IF NOT EXISTS schedule_spot
@@ -55,6 +56,7 @@ CREATE TABLE IF NOT EXISTS schedule_spot
     spot_id INT NOT NULL,
     spot_name CHARACTER(50),
     spot_code CHARACTER(5),
+    spot_timezone CHARACTER(5),
     PRIMARY KEY(spot_id)
 );
 
@@ -106,12 +108,6 @@ CREATE TABLE IF NOT EXISTS reservation_message_type
     message_type_id BIGINT NOT NULL,
     message_type_name CHARACTER(50),
     PRIMARY KEY(message_type_id)
-);
-
-CREATE TABLE IF NOT EXISTS reservation_schedule
-(
-    res_id BIGINT,
-    schedule_id BIGINT    
 );
 
 
@@ -183,12 +179,12 @@ ALTER TABLE reservation_message_log
     
 ALTER TABLE schedule
     ADD    FOREIGN KEY (schedule_id)
-    REFERENCES reservation_schedule(schedule_id)
+    REFERENCES reservation(reservation_departure_schedule)
 ;
     
-ALTER TABLE reservation
-    ADD    FOREIGN KEY (res_id)
-    REFERENCES reservation_schedule(res_id)
+ALTER TABLE schedule
+    ADD    FOREIGN KEY (schedule_id)
+    REFERENCES reservation(reservation_return_schedule)
 ;
     
 

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
-	List<Reservation> findByOwner(Integer login);
+	List<Reservation> findByOwner(Integer id);
 	List<Reservation> findByTimeStamp(Date referenceDate, Comparator<Date> c);
 	List<Reservation> findAll();
 	
