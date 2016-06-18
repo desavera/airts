@@ -1,0 +1,203 @@
+17:50:27,375 INFO  [org.apache.catalina.startup.VersionLoggerListener] main Server version:        Apache Tomcat/8.0.24
+17:50:27,378 INFO  [org.apache.catalina.startup.VersionLoggerListener] main Server built:          Jul 1 2015 20:19:55 UTC
+17:50:27,389 INFO  [org.apache.catalina.startup.VersionLoggerListener] main Server number:         8.0.24.0
+17:50:27,390 INFO  [org.apache.catalina.startup.VersionLoggerListener] main OS Name:               Linux
+17:50:27,400 INFO  [org.apache.catalina.startup.VersionLoggerListener] main OS Version:            4.4.12-boot2docker
+17:50:27,401 INFO  [org.apache.catalina.startup.VersionLoggerListener] main Architecture:          amd64
+17:50:27,406 INFO  [org.apache.catalina.startup.VersionLoggerListener] main Java Home:             /opt/jdk/jdk1.8.0_51/jre
+17:50:27,410 INFO  [org.apache.catalina.startup.VersionLoggerListener] main JVM Version:           1.8.0_51-b16
+17:50:27,410 INFO  [org.apache.catalina.startup.VersionLoggerListener] main JVM Vendor:            Oracle Corporation
+17:50:27,411 INFO  [org.apache.catalina.startup.VersionLoggerListener] main CATALINA_BASE:         /opt/tomcat/apache-tomcat-8.0.24
+17:50:27,413 INFO  [org.apache.catalina.startup.VersionLoggerListener] main CATALINA_HOME:         /opt/tomcat/apache-tomcat-8.0.24
+17:50:27,413 INFO  [org.apache.catalina.startup.VersionLoggerListener] main Command line argument: -Dnop
+17:50:27,414 INFO  [org.apache.catalina.startup.VersionLoggerListener] main Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+17:50:27,414 INFO  [org.apache.catalina.startup.VersionLoggerListener] main Command line argument: -Dnewrelic.environment=development
+17:50:27,414 INFO  [org.apache.catalina.startup.VersionLoggerListener] main Command line argument: -javaagent:/opt/newrelic/newrelic.jar
+17:50:27,415 INFO  [org.apache.catalina.startup.VersionLoggerListener] main Command line argument: -Dnewrelic.enable.java.8
+17:50:27,415 INFO  [org.apache.catalina.startup.VersionLoggerListener] main Command line argument: -Dorg.apache.tomcat.util.digester.PROPERTY_SOURCE=com.mobicare.tomcat.extensions.SystemEnvironmentPropertySource
+17:50:27,415 INFO  [org.apache.catalina.startup.VersionLoggerListener] main Command line argument: -Djava.endorsed.dirs=/opt/tomcat8/endorsed
+17:50:27,416 INFO  [org.apache.catalina.startup.VersionLoggerListener] main Command line argument: -Dcatalina.base=/opt/tomcat8
+17:50:27,416 INFO  [org.apache.catalina.startup.VersionLoggerListener] main Command line argument: -Dcatalina.home=/opt/tomcat8
+17:50:27,417 INFO  [org.apache.catalina.startup.VersionLoggerListener] main Command line argument: -Djava.io.tmpdir=/opt/tomcat8/temp
+17:50:27,417 INFO  [org.apache.catalina.core.AprLifecycleListener] main Loaded APR based Apache Tomcat Native library 1.1.33 using APR version 1.5.1.
+17:50:27,417 INFO  [org.apache.catalina.core.AprLifecycleListener] main APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+17:50:27,480 INFO  [org.apache.catalina.core.AprLifecycleListener] main OpenSSL successfully initialized (OpenSSL 1.0.1k 8 Jan 2015)
+17:50:27,812 INFO  [org.apache.coyote.http11.Http11AprProtocol] main Initializing ProtocolHandler ["http-apr-8080"]
+17:50:27,866 INFO  [org.apache.coyote.ajp.AjpAprProtocol] main Initializing ProtocolHandler ["ajp-apr-8009"]
+17:50:27,874 INFO  [org.apache.catalina.startup.Catalina] main Initialization processed in 1406 ms
+17:50:27,962 INFO  [org.apache.catalina.core.StandardService] main Starting service Catalina
+17:50:27,965 INFO  [org.apache.catalina.core.StandardEngine] main Starting Servlet Engine: Apache Tomcat/8.0.24
+17:50:28,027 INFO  [org.apache.catalina.startup.HostConfig] localhost-startStop-1 Deploying web application archive /opt/tomcat/apache-tomcat-8.0.24/webapps/cm-reports.war
+17:50:33,224 WARN  [org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory] localhost-startStop-1 Name = mercatorDS Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "4" for "maxActive" property, which is being ignored.
+17:50:33,233 WARN  [org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory] localhost-startStop-1 Name = mercatorDS Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is -1. You have set value of "5000" for "maxWait" property, which is being ignored.
+17:50:34,529 INFO  [org.apache.jasper.servlet.TldScanner] localhost-startStop-1 At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+17:50:34,737 INFO  [org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/cm-reports]] localhost-startStop-1 Spring WebApplicationInitializers detected on classpath: [org.springframework.boot.autoconfigure.jersey.JerseyAutoConfiguration@2a71b5e2, com.mobicare.wifi.cm.reports.Application@39f3ba72]
+17:50:40,717 INFO  [org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/cm-reports]] localhost-startStop-1 Initializing Spring embedded WebApplicationContext
+17:50:44,218 WARN  [org.apache.tomcat.jdbc.pool.ConnectionPool] localhost-startStop-1 initialSize is larger than maxActive, setting initialSize to: 3
+17:50:44,227 WARN  [org.apache.tomcat.jdbc.pool.ConnectionPool] localhost-startStop-1 minIdle is larger than maxActive, setting minIdle to: 3
+17:50:44,229 WARN  [org.apache.tomcat.jdbc.pool.ConnectionPool] localhost-startStop-1 maxIdle is larger than maxActive, setting maxIdle to: 3
+17:50:49,546 INFO  [org.apache.catalina.startup.HostConfig] localhost-startStop-1 Deployment of web application archive /opt/tomcat/apache-tomcat-8.0.24/webapps/cm-reports.war has finished in 21,516 ms
+17:50:49,563 INFO  [org.apache.coyote.http11.Http11AprProtocol] main Starting ProtocolHandler ["http-apr-8080"]
+17:50:49,593 INFO  [org.apache.coyote.ajp.AjpAprProtocol] main Starting ProtocolHandler ["ajp-apr-8009"]
+17:50:49,597 INFO  [org.apache.catalina.startup.Catalina] main Server startup in 21715 ms
+17:56:05,731 INFO  [org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/cm-reports]] http-apr-8080-exec-1 Initializing Spring FrameworkServlet 'dispatcherServlet'
+19:35:37,941 WARN  [org.apache.tomcat.dbcp.dbcp2.BasicDataSource] commons-pool-EvictionTimer An internal object pool swallowed an Exception.
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:400)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1038)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:339)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2247)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2280)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2079)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:794)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:44)
+	at sun.reflect.GeneratedConstructorAccessor40.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:400)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:399)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:325)
+	at org.apache.tomcat.dbcp.dbcp2.DriverConnectionFactory.createConnection(DriverConnectionFactory.java:38)
+	at org.apache.tomcat.dbcp.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:255)
+	at org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:867)
+	at org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.ensureIdle(GenericObjectPool.java:926)
+	at org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.ensureMinIdle(GenericObjectPool.java:905)
+	at org.apache.tomcat.dbcp.pool2.impl.BaseGenericObjectPool$Evictor.run(BaseGenericObjectPool.java:1044)
+	at java.util.TimerThread.mainLoop(Timer.java:555)
+	at java.util.TimerThread.run(Timer.java:505)
+Caused by: java.net.UnknownHostException: net-wifi-public-services-db.cm2al8mslmkz.sa-east-1.rds.amazonaws.com: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:191)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:298)
+	... 19 more
+19:36:04,275 WARN  [org.apache.tomcat.dbcp.dbcp2.BasicDataSource] commons-pool-EvictionTimer An internal object pool swallowed an Exception.
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:400)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1038)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:339)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2247)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2280)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2079)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:794)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:44)
+	at sun.reflect.GeneratedConstructorAccessor40.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:400)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:399)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:325)
+	at org.apache.tomcat.dbcp.dbcp2.DriverConnectionFactory.createConnection(DriverConnectionFactory.java:38)
+	at org.apache.tomcat.dbcp.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:255)
+	at org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:867)
+	at org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.ensureIdle(GenericObjectPool.java:926)
+	at org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.ensureMinIdle(GenericObjectPool.java:905)
+	at org.apache.tomcat.dbcp.pool2.impl.BaseGenericObjectPool$Evictor.run(BaseGenericObjectPool.java:1044)
+	at java.util.TimerThread.mainLoop(Timer.java:555)
+	at java.util.TimerThread.run(Timer.java:505)
+Caused by: java.net.UnknownHostException: net-wifi-public-services-db.cm2al8mslmkz.sa-east-1.rds.amazonaws.com: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:191)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:298)
+	... 19 more
+19:36:34,261 WARN  [org.apache.tomcat.dbcp.dbcp2.BasicDataSource] commons-pool-EvictionTimer An internal object pool swallowed an Exception.
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:400)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1038)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:339)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2247)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2280)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2079)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:794)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:44)
+	at sun.reflect.GeneratedConstructorAccessor40.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:400)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:399)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:325)
+	at org.apache.tomcat.dbcp.dbcp2.DriverConnectionFactory.createConnection(DriverConnectionFactory.java:38)
+	at org.apache.tomcat.dbcp.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:255)
+	at org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:867)
+	at org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.ensureIdle(GenericObjectPool.java:926)
+	at org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.ensureMinIdle(GenericObjectPool.java:905)
+	at org.apache.tomcat.dbcp.pool2.impl.BaseGenericObjectPool$Evictor.run(BaseGenericObjectPool.java:1044)
+	at java.util.TimerThread.mainLoop(Timer.java:555)
+	at java.util.TimerThread.run(Timer.java:505)
+Caused by: java.net.UnknownHostException: net-wifi-public-services-db.cm2al8mslmkz.sa-east-1.rds.amazonaws.com: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:191)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:298)
+	... 19 more
+19:37:04,256 WARN  [org.apache.tomcat.dbcp.dbcp2.BasicDataSource] commons-pool-EvictionTimer An internal object pool swallowed an Exception.
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:400)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1038)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:339)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2247)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2280)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2079)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:794)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:44)
+	at sun.reflect.GeneratedConstructorAccessor40.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:400)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:399)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:325)
+	at org.apache.tomcat.dbcp.dbcp2.DriverConnectionFactory.createConnection(DriverConnectionFactory.java:38)
+	at org.apache.tomcat.dbcp.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:255)
+	at org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:867)
+	at org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.ensureIdle(GenericObjectPool.java:926)
+	at org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.ensureMinIdle(GenericObjectPool.java:905)
+	at org.apache.tomcat.dbcp.pool2.impl.BaseGenericObjectPool$Evictor.run(BaseGenericObjectPool.java:1044)
+	at java.util.TimerThread.mainLoop(Timer.java:555)
+	at java.util.TimerThread.run(Timer.java:505)
+Caused by: java.net.UnknownHostException: net-wifi-public-services-db.cm2al8mslmkz.sa-east-1.rds.amazonaws.com: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:191)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:298)
+	... 19 more

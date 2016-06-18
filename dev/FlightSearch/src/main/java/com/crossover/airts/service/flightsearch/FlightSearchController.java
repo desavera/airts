@@ -1,6 +1,8 @@
 package com.crossover.airts.service.flightsearch;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -8,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +29,9 @@ public class FlightSearchController {
 	final Logger logger = Logger.getLogger(FlightSearchController.class); 
 
     
-    @RequestMapping(value="/fsearch" , method=RequestMethod.POST)
+    @RequestMapping(value="/fsearch" , method=RequestMethod.POST,
+		    		consumes = {MediaType.APPLICATION_JSON_VALUE},
+		    		produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Schedule> findSchedulesByQueryParam(
     		final @RequestParam(defaultValue = "0", required = false) int page,
      	    final @RequestParam(defaultValue = "10", required = false) int pageSize,
@@ -35,20 +40,18 @@ public class FlightSearchController {
 		logger.debug("Quering schedules for : " + '\n' + query);
 
 		Pageable pager = new PageRequest(page, pageSize);
-		
-		Spot qorigin = spotRepo.findByCode(query.getOrigin().toUpperCase());
-		Spot qdestiny = spotRepo.findByCode(query.getDestiny().toUpperCase());
 
-		List<Schedule> spotsMatch1 = scheduleRepo.findByOriginAndDestinyAndNseats(qorigin, qdestiny,
-				query.getNpassengers(),pager);
-		List<Schedule> spotsMatch2 = scheduleRepo.findByOriginAndDestinyAndNseats(qdestiny, qorigin,
-				query.getNpassengers(),pager);
-    	
-		List<Schedule> matchList = new ArrayList();
-		matchList.addAll(spotsMatch1);
-		matchList.addAll(spotsMatch2);
+		Spot origin = spotRepo.findByCode(query.getOrigin().toUpperCase());
+		Spot destiny = spotRepo.findByCode(query.getDestiny().toUpperCase());
+
+		Date queryDeparture = ScheduleQuery.createQueryDateFromString(query.getDeparturing()); 
+		Date queryReturning = ScheduleQuery.createQueryDateFromString(query.getReturning()); 
+
+
+		List<Schedule> matchList = scheduleRepo.findByQueryParam(origin, destiny, query.getSeats(),queryDeparture,queryReturning,pager);
 
 		return matchList;
+
     }    
 
     @RequestMapping(value="/fsearch/{schedule_id}", method=RequestMethod.PUT)

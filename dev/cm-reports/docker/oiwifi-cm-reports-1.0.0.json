@@ -1,0 +1,16 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Authentication": {
+    "Bucket": "oiwifi-scm-2",
+    "Key": "docker/dockercfg/dockercfg"
+  },
+  "Image": {
+    "Name": "docker-mobicare.netcombowifi.com.br/java8-wifi-cm-reports:1.0.0"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "8080"
+    }
+  ],
+  "Logging": "/var/log/tomcat8"
+}

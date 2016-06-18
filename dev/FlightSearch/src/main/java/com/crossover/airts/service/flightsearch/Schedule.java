@@ -5,7 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
+import java.util.TimeZone;
 
 import org.apache.log4j.Logger;
 
@@ -21,34 +21,28 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 @Entity
 @Table(name = "schedule")
 public class Schedule implements Serializable {
 
 	private final static long serialVersionUID = 1L;
 
-	// the default date format
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-	
-	final Logger logger = Logger.getLogger(Schedule.class); 
-
-
+	final Logger logger = Logger.getLogger(Schedule.class);
 
 	//
 	// Data members
 	//
 	private Integer id;
 	private Date departureTime;
-	private Spot origin;	
+	private Spot origin;
 	private Spot destiny;
-	private Integer nseats;
-	private Double costs;	
+	private Integer numOfSeats;
+	private Double costs;
 	private Date arrivingTime;
 
 	//
 	// Accessors/Mutators
-	//	
+	//
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Integer getId() {
@@ -60,13 +54,13 @@ public class Schedule implements Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "schedule_departure_time")	
+	@Column(name = "schedule_departure_time")
 	public Date getDepartureTime() {
 		return departureTime;
 	}
 
 	public void setDepartureTime(Date departureTime) {
-		this.departureTime = departureTime;
+		this.departureTime = departureTime;		
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -78,18 +72,18 @@ public class Schedule implements Serializable {
 	public void setArrivingTime(Date arrivingTime) {
 		this.arrivingTime = arrivingTime;
 	}
-	
-	@Column(name = "schedule_costs")	
+
+	@Column(name = "schedule_costs")
 	public Double getCosts() {
 		return costs;
 	}
 
 	public void setCosts(Double costs) {
 		this.costs = costs;
-	}
+	}	
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="id", insertable=false, updatable=false)		
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id", insertable = false, updatable = false)
 	public Spot getOrigin() {
 		return origin;
 	}
@@ -98,8 +92,8 @@ public class Schedule implements Serializable {
 		this.origin = origin;
 	}
 
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="id", insertable=false, updatable=false)
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id", insertable = false, updatable = false)
 	public Spot getDestiny() {
 		return destiny;
 	}
@@ -109,102 +103,91 @@ public class Schedule implements Serializable {
 	}
 
 	@Column(name = "schedule_available_seats")
-	public Integer getNseats() {
-		return nseats;
+	public Integer getNumOfSeats() {
+		return numOfSeats;
 	}
 
-	public void setNseats(Integer nseats) {
-		this.nseats = nseats;
+	public void setNumOfSeats(Integer nseats) {
+		this.numOfSeats = nseats;
 	}
 
-	
+
 	//
 	// Methods
-	//
+	//	
 	public void update(Schedule schedule) {
 
-    	if (schedule.getId() == this.getId()) {
-    		
-    		this.setDepartureTime(schedule.getDepartureTime());
-    		this.setDestiny(schedule.getDestiny());
-    		this.setNseats(schedule.getNseats());
-    		this.setOrigin(schedule.getOrigin());    		    	
-    		
-    	} else throw new IllegalArgumentException("invalid update for schedule id : " + schedule.getId() + " to entity id : " + this.getId());
-    			
+		if (schedule.getId() == this.getId()) {
+
+			this.setDepartureTime(schedule.getDepartureTime());
+			this.setDestiny(schedule.getDestiny());
+			this.setNumOfSeats(schedule.getNumOfSeats());
+			this.setOrigin(schedule.getOrigin());
+
+		} else
+			throw new IllegalArgumentException(
+					"invalid update for schedule id : " + schedule.getId() + " to entity id : " + this.getId());
+
 	}
-	
+
 	@Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + id;
-        return result;
-    }
- 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (!(obj instanceof Schedule))
-            return false;
-        Schedule other = (Schedule) obj;
-        if (id != other.id)
-            return false;
-        return true;
-    }
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Schedule))
+			return false;
+		Schedule other = (Schedule) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
 
 	public boolean isDeparturingDate(String dateString) {
-		
-		 
-		try {
-			
-			Date thisDeparture = this.getDepartureTime();
-			Date queryDeparture = sdf.parse(dateString.substring(0,10) + " 00:00:00");
- 
-			Calendar calendar = Calendar.getInstance();
-			
-			calendar.setTime(thisDeparture);
-			
-			int tyear       = calendar.get(Calendar.YEAR);
-			int tmonth      = calendar.get(Calendar.MONTH); 
-			int tdayOfMonth = calendar.get(Calendar.DAY_OF_MONTH); 			
-		    		
-			calendar.setTime(queryDeparture);
-			
-			int qyear       = calendar.get(Calendar.YEAR);
-			int qmonth      = calendar.get(Calendar.MONTH); 
-			int qdayOfMonth = calendar.get(Calendar.DAY_OF_MONTH); 					          
-			
-			
-			if ((tdayOfMonth == qdayOfMonth) && (tmonth == qmonth) && (tyear == qyear))
-				 return true;			 			 			 			
 
-			
-		} catch (ParseException e) {
-			
-			logger.error("Error parsing date string : " + dateString + e);			
-		} 
-		 		 				 		
-		 
+		Date thisDeparture = this.getDepartureTime();
+		Date queryDeparture = ScheduleQuery.createQueryDateFromString(dateString);
+
+		Calendar calendar = Calendar.getInstance();
+
+		calendar.setTime(thisDeparture);
+
+		int tyear = calendar.get(Calendar.YEAR);
+		int tmonth = calendar.get(Calendar.MONTH);
+		int tdayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+
+		calendar.setTime(queryDeparture);
+
+		int qyear = calendar.get(Calendar.YEAR);
+		int qmonth = calendar.get(Calendar.MONTH);
+		int qdayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+
+		if ((tdayOfMonth == qdayOfMonth) && (tmonth == qmonth) && (tyear == qyear))
+			return true;
+
 		return false;
 	}
-	
+
 	public String toString() {
-	
+
 		StringBuffer str = new StringBuffer();
 		str.append("Id : " + id + '\n');
 		str.append("Origin : " + origin + '\n');
 		str.append("Destiny : " + destiny + '\n');
 		str.append("Departuring : " + departureTime + '\n');
-		str.append("N of Seats : " + nseats + '\n');		
+		str.append("N of Seats : " + numOfSeats + '\n');
 		str.append("Costs : " + costs + '\n');
-		
+
 		return str.toString();
 	}
 
-		
-		    		
 }

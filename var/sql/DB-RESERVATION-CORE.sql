@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS reservation_owner
 
 CREATE TABLE IF NOT EXISTS schedule
 (
-    id INT,
+    id BIGINT NOT NULL,
     schedule_departure_time DATE,
     schedule_origin INT,
     schedule_destiny INT,
