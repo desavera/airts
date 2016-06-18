@@ -16,7 +16,6 @@ CREATE TABLE IF NOT EXISTS reservation
     reservation_state INT,
     reservation_departure_schedule BIGINT,
     reservation_transaction BIGINT,
-    reservation_timestamp DATE,
     reservation_return_schedule BIGINT,
     reservation_total_costs DOUBLE,
     reservation_nseats INT,
@@ -77,6 +76,7 @@ CREATE TABLE IF NOT EXISTS reservation_transaction
     transaction_id BIGINT NOT NULL,
     transaction_broker INT,
     transaction_broker_transaction_id BIGINT,
+    transaction_timestamp DATE,
     PRIMARY KEY(transaction_id)
 );
 
