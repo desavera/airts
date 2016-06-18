@@ -51,7 +51,6 @@ public class Schedule implements Serializable {
 	//	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "schedule_id")
 	public Integer getId() {
 		return id;
 	}
@@ -90,7 +89,7 @@ public class Schedule implements Serializable {
 	}
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="spot_id", insertable=false, updatable=false)		
+	@JoinColumn(name="id", insertable=false, updatable=false)		
 	public Spot getOrigin() {
 		return origin;
 	}
@@ -100,7 +99,7 @@ public class Schedule implements Serializable {
 	}
 
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="spot_id", insertable=false, updatable=false)
+	@JoinColumn(name="id", insertable=false, updatable=false)
 	public Spot getDestiny() {
 		return destiny;
 	}

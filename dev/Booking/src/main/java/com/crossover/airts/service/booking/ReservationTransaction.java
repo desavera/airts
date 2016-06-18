@@ -18,7 +18,7 @@ public class ReservationTransaction {
 	//
 	// Data Members
 	//
-	private Integer transaction_id;                  
+	private Integer id;                  
 	private Integer broker;            	
 	private Integer brokerTransaction_id; 
 	private Date timestamp; 
@@ -29,11 +29,11 @@ public class ReservationTransaction {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Integer getTransaction_id() {
-		return transaction_id;
+	public Integer getId() {
+		return id;
 	}
-	public void setTransaction_id(Integer transaction_id) {
-		this.transaction_id = transaction_id;
+	public void setId(Integer transaction_id) {
+		this.id = transaction_id;
 	}
 		
 	@Temporal(TemporalType.TIMESTAMP)

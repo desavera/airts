@@ -28,9 +28,9 @@ public class Reservation implements Serializable {
 	//
 	// Data members
 	//
-	private Integer res_id;
+	private Integer id;
 	private Integer owner;
-	private ReservationState state;
+//	private ReservationState state;
 	private Schedule depSchedule;
 	private Schedule retSchedule;	
 	private ReservationTransaction transaction;
@@ -44,12 +44,12 @@ public class Reservation implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Integer getRes_id() {
-		return res_id;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setRes_id(Integer res_id) {
-		this.res_id = res_id;
+	public void setId(Integer res_id) {
+		this.id = res_id;
 	}
 	
 	@Column(name = "reservation_owner")
@@ -60,9 +60,9 @@ public class Reservation implements Serializable {
 	public void setOwner(Integer owner) {
 		this.owner = owner;
 	}
-
+/*
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="state_id")			
+	@JoinColumn(name="id")			
 	public ReservationState getState() {
 		return state;
 	}
@@ -70,9 +70,9 @@ public class Reservation implements Serializable {
 	public void setState(ReservationState state) {
 		this.state = state;
 	}
-
+*/
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="schedule_id", insertable=false, updatable=false)		
+	@JoinColumn(name="id", insertable=false, updatable=false)		
 	public Schedule getDepSchedule() {
 		return depSchedule;
 	}
@@ -83,7 +83,7 @@ public class Reservation implements Serializable {
 
 
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="schedule_id", insertable=false, updatable=false)				
+	@JoinColumn(name="id", insertable=false, updatable=false)				
 	public Schedule getRetSchedule() {
 		return retSchedule;
 	}
@@ -92,7 +92,7 @@ public class Reservation implements Serializable {
 		this.retSchedule = retSchedule;
 	}
 
-	@Column(name = "reservation_seats")	
+	@Column(name = "reservation_nseats")	
 	public Integer getnSeats() {
 		return nSeats;
 	}
@@ -102,7 +102,7 @@ public class Reservation implements Serializable {
 	}
 
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="transaction_id")				
+	@JoinColumn(name="id")				
 	public ReservationTransaction getTransaction() {
 		return transaction;
 	}
@@ -126,9 +126,9 @@ public class Reservation implements Serializable {
 	public String toString() {
 		
 		StringBuffer str = new StringBuffer();
-		str.append("Id : " + res_id + '\n');
+		str.append("Id : " + id + '\n');
 		str.append("Owner : " + owner + '\n');
-		str.append("State : " + state + '\n');
+	//	str.append("State : " + state + '\n');
 		str.append("Departure : " + depSchedule + '\n');
 		str.append("Return : " + retSchedule + '\n');
 		str.append("N of Seats : " + nSeats + '\n');		

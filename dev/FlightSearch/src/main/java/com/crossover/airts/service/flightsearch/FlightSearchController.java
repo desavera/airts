@@ -53,7 +53,7 @@ public class FlightSearchController {
 
     @RequestMapping(value="/fsearch/{schedule_id}", method=RequestMethod.PUT)
     public Schedule updateSchedule(@RequestBody Schedule schedule) {    	
-    	Schedule entity = scheduleRepo.findBySchedule_Id(schedule.getSchedule_id());
+    	Schedule entity = scheduleRepo.findById(schedule.getId());
     	
     	entity.update(schedule);
     		

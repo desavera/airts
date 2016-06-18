@@ -24,7 +24,7 @@ public class Spot {
 	//
 	// Data members
 	//
-	private Integer spot_id;
+	private Integer id;
 	private String name;	
 	private String code;	
 	private String timezone;	
@@ -35,12 +35,12 @@ public class Spot {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)	
-	public Integer getSpot_id() {
-		return spot_id;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setSpot_id(Integer spot_id) {
-		this.spot_id = spot_id;
+	public void setId(Integer spot_id) {
+		this.id = spot_id;
 	}
 
 	@Column(name = "spot_name")
@@ -78,7 +78,7 @@ public class Spot {
 	public String toString() {
 	
 		StringBuffer str = new StringBuffer();
-		str.append("Id : " + spot_id + '\n');
+		str.append("Id : " + id + '\n');
 		str.append("Name : " + name + '\n');
 		str.append("Code : " + code + '\n');
 		str.append("Timezone : " + timezone + '\n');

@@ -1,3 +1,4 @@
+# Create schemas
 # Create database
 
 CREATE DATABASE airtsdev;
@@ -25,7 +26,7 @@ CREATE TABLE IF NOT EXISTS reservation_state
     id INT NOT NULL,
     next_state INT,
     previous_state INT,
-    state_name CHARACTER(50),
+    name CHARACTER(50),
     PRIMARY KEY(id)
 );
 
@@ -45,7 +46,8 @@ CREATE TABLE IF NOT EXISTS schedule
     schedule_origin INT,
     schedule_destiny INT,
     schedule_available_seats CHARACTER(250),
-    schedule_costs DOUBLE    
+    schedule_costs DOUBLE,
+    schedule_arriving_time DATE    
 );
 
 CREATE TABLE IF NOT EXISTS schedule_spot
