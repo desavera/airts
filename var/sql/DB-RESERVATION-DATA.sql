@@ -21,6 +21,6 @@ commit;
 INSERT INTO reservation_transaction VALUES (1,1,322333);
 insert INTO reservation_state VALUES(1,2,0,"PENDING_PAYMENT");
 insert INTO reservation_owner VALUES(1,"Mario de Sa Vera","HG23H777-BR","desavera@gmail.com");
-insert INTO reservation VALUES (1,1,1,1,1,1,"23",NOW());
+insert INTO reservation VALUES (1,1,1,1,1,1,1,"23",NOW());
 
 commit;
