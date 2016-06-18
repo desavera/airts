@@ -3,6 +3,7 @@ package com.crossover.airts.service.booking;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,11 +29,11 @@ public class BookingController {
     }
     
     @RequestMapping("/bsearch")
-    public List<Reservation> findAllReservations(
+    public Page<Reservation> findAllReservations(
     		final @RequestParam(defaultValue = "0", required = false) int page,
      	    final @RequestParam(defaultValue = "10", required = false) int pageSize) { 
-    	Pageable topTen = new PageRequest(page, pageSize);
-    	List<Reservation> entities = reservationRepo.findAll();
+    	Pageable pager = new PageRequest(page, pageSize);
+    	Page<Reservation> entities = reservationRepo.findAll(pager);
         return entities;
     }
 }

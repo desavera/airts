@@ -30,7 +30,7 @@ public class Reservation implements Serializable {
 	//
 	private Integer id;
 	private Integer owner;
-//	private ReservationState state;
+	private ReservationState resState;
 	private Schedule depSchedule;
 	private Schedule retSchedule;	
 	private ReservationTransaction transaction;
@@ -60,17 +60,17 @@ public class Reservation implements Serializable {
 	public void setOwner(Integer owner) {
 		this.owner = owner;
 	}
-/*
+
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="id")			
 	public ReservationState getState() {
-		return state;
+		return resState;
 	}
 
 	public void setState(ReservationState state) {
-		this.state = state;
+		this.resState = state;
 	}
-*/
+
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="id", insertable=false, updatable=false)		
 	public Schedule getDepSchedule() {
