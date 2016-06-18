@@ -1,4 +1,4 @@
-package com.crossover.airts.model;
+package com.crossover.airts.service.booking;
 
 public class ScheduleQuery {
 

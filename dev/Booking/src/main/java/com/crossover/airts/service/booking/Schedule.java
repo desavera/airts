@@ -1,4 +1,4 @@
-package com.crossover.airts.model;
+package com.crossover.airts.service.booking;
 
 import java.io.Serializable;
 import java.text.ParseException;
@@ -38,7 +38,7 @@ public class Schedule implements Serializable {
 	//
 	// Data members
 	//
-	private Integer schedule_id;
+	private Integer id;
 	private Date departureTime;
 	private Spot origin;	
 	private Spot destiny;
@@ -51,12 +51,13 @@ public class Schedule implements Serializable {
 	//	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Integer getSchedule_id() {
-		return schedule_id;
+	@Column(name = "schedule_id")
+	public Integer getId() {
+		return id;
 	}
 
-	public void setSchedule_id(Integer sch_id) {
-		this.schedule_id = sch_id;
+	public void setId(Integer sch_id) {
+		this.id = sch_id;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -89,7 +90,7 @@ public class Schedule implements Serializable {
 	}
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="spot_id")		
+	@JoinColumn(name="spot_id", insertable=false, updatable=false)		
 	public Spot getOrigin() {
 		return origin;
 	}
@@ -99,7 +100,7 @@ public class Schedule implements Serializable {
 	}
 
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="spot_id")
+	@JoinColumn(name="spot_id", insertable=false, updatable=false)
 	public Spot getDestiny() {
 		return destiny;
 	}
@@ -123,14 +124,14 @@ public class Schedule implements Serializable {
 	//
 	public void update(Schedule schedule) {
 
-    	if (schedule.getSchedule_id() == this.getSchedule_id()) {
+    	if (schedule.getId() == this.getId()) {
     		
     		this.setDepartureTime(schedule.getDepartureTime());
     		this.setDestiny(schedule.getDestiny());
     		this.setNseats(schedule.getNseats());
     		this.setOrigin(schedule.getOrigin());    		    	
     		
-    	} else throw new IllegalArgumentException("invalid update for schedule id : " + schedule.getSchedule_id() + " to entity id : " + this.getSchedule_id());
+    	} else throw new IllegalArgumentException("invalid update for schedule id : " + schedule.getId() + " to entity id : " + this.getId());
     			
 	}
 	
@@ -138,7 +139,7 @@ public class Schedule implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + schedule_id;
+        result = prime * result + id;
         return result;
     }
  
@@ -151,7 +152,7 @@ public class Schedule implements Serializable {
         if (!(obj instanceof Schedule))
             return false;
         Schedule other = (Schedule) obj;
-        if (schedule_id != other.schedule_id)
+        if (id != other.id)
             return false;
         return true;
     }
@@ -195,7 +196,7 @@ public class Schedule implements Serializable {
 	public String toString() {
 	
 		StringBuffer str = new StringBuffer();
-		str.append("Id : " + schedule_id + '\n');
+		str.append("Id : " + id + '\n');
 		str.append("Origin : " + origin + '\n');
 		str.append("Destiny : " + destiny + '\n');
 		str.append("Departuring : " + departureTime + '\n');

@@ -1,4 +1,4 @@
-package com.crossover.airts.model;
+package com.crossover.airts.service.flightsearch;
 
 import java.io.Serializable;
 import java.text.ParseException;
@@ -89,7 +89,7 @@ public class Schedule implements Serializable {
 	}
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="spot_id")		
+	@JoinColumn(name="spot_id", insertable=false, updatable=false)		
 	public Spot getOrigin() {
 		return origin;
 	}
@@ -99,7 +99,7 @@ public class Schedule implements Serializable {
 	}
 
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="spot_id")
+	@JoinColumn(name="spot_id", insertable=false, updatable=false)
 	public Spot getDestiny() {
 		return destiny;
 	}

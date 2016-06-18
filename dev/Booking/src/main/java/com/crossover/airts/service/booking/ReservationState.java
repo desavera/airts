@@ -1,4 +1,4 @@
-package com.crossover.airts.model;
+package com.crossover.airts.service.booking;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

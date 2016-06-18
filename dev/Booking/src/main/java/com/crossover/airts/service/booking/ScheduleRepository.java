@@ -1,4 +1,4 @@
-package com.crossover.airts.model;
+package com.crossover.airts.service.booking;
 
 import java.util.Date;
 import java.util.List;
@@ -12,8 +12,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ScheduleRepository extends JpaRepository<Schedule, Integer> {
-	Schedule findBySchedule_Id(Integer id);
+	Schedule findById(Integer id);
 	Page<Schedule> findAll(Pageable pager);
-	List<Schedule> findByQueryParam(ScheduleQuery query,Pageable pager);	
 	List<Schedule> findByOriginAndDestinyAndNseats(Spot qorigin, Spot qdestiny, int npassengers,Pageable pager);	
 }

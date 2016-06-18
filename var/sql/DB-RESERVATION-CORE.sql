@@ -6,12 +6,10 @@ CREATE DATABASE airtsdev;
 
 USE airtsdev;
 
-# Create schemas
-
 # Create tables
 CREATE TABLE IF NOT EXISTS reservation
 (
-    res_id INT NOT NULL,
+    id INT NOT NULL,
     reservation_owner BIGINT,
     reservation_state INT,
     reservation_departure_schedule BIGINT,
@@ -19,30 +17,30 @@ CREATE TABLE IF NOT EXISTS reservation
     reservation_return_schedule BIGINT,
     reservation_total_costs DOUBLE,
     reservation_nseats INT,
-    PRIMARY KEY(res_id)
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS reservation_state
 (
-    state_id INT NOT NULL,
+    id INT NOT NULL,
     next_state INT,
     previous_state INT,
     state_name CHARACTER(50),
-    PRIMARY KEY(state_id)
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS reservation_owner
 (
-    owner_id BIGINT NOT NULL,
+    id BIGINT NOT NULL,
     owner_name CHARACTER(50),
     owner_passport_number CHARACTER(50),
     owner_email CHARACTER(50),
-    PRIMARY KEY(owner_id)
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS schedule
 (
-    schedule_id INT,
+    id INT,
     schedule_departure_time DATE,
     schedule_origin INT,
     schedule_destiny INT,
@@ -52,11 +50,11 @@ CREATE TABLE IF NOT EXISTS schedule
 
 CREATE TABLE IF NOT EXISTS schedule_spot
 (
-    spot_id INT NOT NULL,
+    id INT NOT NULL,
     spot_name CHARACTER(50),
     spot_code CHARACTER(5),
     spot_timezone CHARACTER(5),
-    PRIMARY KEY(spot_id)
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS user_session
@@ -73,11 +71,11 @@ CREATE TABLE IF NOT EXISTS user_session
 
 CREATE TABLE IF NOT EXISTS reservation_transaction
 (
-    transaction_id BIGINT NOT NULL,
+    id BIGINT NOT NULL,
     transaction_broker INT,
     transaction_broker_transaction_id BIGINT,
     transaction_timestamp DATE,
-    PRIMARY KEY(transaction_id)
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS auth_broker
@@ -105,56 +103,56 @@ CREATE TABLE IF NOT EXISTS reservation_message_log
 
 CREATE TABLE IF NOT EXISTS reservation_message_type
 (
-    message_type_id BIGINT NOT NULL,
+    id BIGINT NOT NULL,
     message_type_name CHARACTER(50),
-    PRIMARY KEY(message_type_id)
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS checkout_control
 (
-    checkout_id INT NOT NULL,
+    id INT NOT NULL,
     checkout_departure_timestamp DATE,
     checkout_departure_seats CHARACTER(250),
     checkout_return_timestamp DATE,
     checkout_return_seats CHARACTER(250),
-    PRIMARY KEY(checkout_id)
+    PRIMARY KEY(id)
 );
 
 
 # Create FKs
 ALTER TABLE reservation_state
-    ADD    FOREIGN KEY (state_id)
+    ADD    FOREIGN KEY (id)
     REFERENCES reservation_state(previous_state)
 ;
     
 ALTER TABLE reservation
     ADD    FOREIGN KEY (reservation_owner)
-    REFERENCES reservation_owner(owner_id)
+    REFERENCES reservation_owner(id)
 ;
     
 ALTER TABLE reservation
     ADD    FOREIGN KEY (reservation_state)
-    REFERENCES reservation_state(state_id)
+    REFERENCES reservation_state(id)
 ;
     
 ALTER TABLE schedule
     ADD    FOREIGN KEY (schedule_origin)
-    REFERENCES schedule_spot(spot_id)
+    REFERENCES schedule_spot(id)
 ;
     
 ALTER TABLE schedule
     ADD    FOREIGN KEY (schedule_destiny)
-    REFERENCES schedule_spot(spot_id)
+    REFERENCES schedule_spot(id)
 ;
     
 ALTER TABLE reservation_state
-    ADD    FOREIGN KEY (state_id)
+    ADD    FOREIGN KEY (id)
     REFERENCES reservation_state(next_state)
 ;
     
 ALTER TABLE reservation
     ADD    FOREIGN KEY (reservation_transaction)
-    REFERENCES reservation_transaction(transaction_id)
+    REFERENCES reservation_transaction(id)
 ;
     
 ALTER TABLE user_session
@@ -164,7 +162,7 @@ ALTER TABLE user_session
     
 ALTER TABLE user_session
     ADD    FOREIGN KEY (reservation_owner)
-    REFERENCES reservation_owner(owner_id)
+    REFERENCES reservation_owner(id)
 ;
     
 ALTER TABLE owner_auth_broker_map
@@ -174,32 +172,32 @@ ALTER TABLE owner_auth_broker_map
     
 ALTER TABLE owner_auth_broker_map
     ADD    FOREIGN KEY (reservation_owner)
-    REFERENCES reservation_owner(owner_id)
+    REFERENCES reservation_owner(id)
 ;
     
 ALTER TABLE reservation_message_log
     ADD    FOREIGN KEY (reservation)
-    REFERENCES reservation(res_id)
+    REFERENCES reservation(id)
 ;
     
 ALTER TABLE reservation_message_log
     ADD    FOREIGN KEY (message_type)
-    REFERENCES reservation_message_type(message_type_id)
+    REFERENCES reservation_message_type(id)
 ;
     
 ALTER TABLE schedule
-    ADD    FOREIGN KEY (schedule_id)
+    ADD    FOREIGN KEY (id)
     REFERENCES reservation(reservation_departure_schedule)
 ;
     
 ALTER TABLE schedule
-    ADD    FOREIGN KEY (schedule_id)
+    ADD    FOREIGN KEY (id)
     REFERENCES reservation(reservation_return_schedule)
 ;
     
 ALTER TABLE checkout_control
-    ADD    FOREIGN KEY (checkout_id)
-    REFERENCES reservation(res_id)
+    ADD    FOREIGN KEY (id)
+    REFERENCES reservation(id)
 ;
     
 

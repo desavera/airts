@@ -1,4 +1,4 @@
-package com.crossover.airts.model;
+package com.crossover.airts.service.booking;
 
 import java.util.Date;
 import java.util.List;
@@ -11,9 +11,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
 	List<Reservation> findByOwner(Integer id,Pageable pages);
-	List<Reservation> findByTimeStamp(Date referenceDate, Comparator<Date> c);
-	List<Reservation> findAll();
-	
-	
-	
+	List<Reservation> findAll();	
 }

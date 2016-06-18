@@ -15,12 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.crossover.airts.model.ScheduleQuery;
-import com.crossover.airts.model.Schedule;
-import com.crossover.airts.model.ScheduleRepository;
-import com.crossover.airts.model.Spot;
-import com.crossover.airts.model.SpotRepository;
-
 @RestController
 public class FlightSearchController {
 	
@@ -42,8 +36,8 @@ public class FlightSearchController {
 
 		Pageable pager = new PageRequest(page, pageSize);
 		
-		Spot qorigin = spotRepo.findByCode(query.getOrigin().toUpperCase(),pager);
-		Spot qdestiny = spotRepo.findByCode(query.getDestiny().toUpperCase(),pager);
+		Spot qorigin = spotRepo.findByCode(query.getOrigin().toUpperCase());
+		Spot qdestiny = spotRepo.findByCode(query.getDestiny().toUpperCase());
 
 		List<Schedule> spotsMatch1 = scheduleRepo.findByOriginAndDestinyAndNseats(qorigin, qdestiny,
 				query.getNpassengers(),pager);

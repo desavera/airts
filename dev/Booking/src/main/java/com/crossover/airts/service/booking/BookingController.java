@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.crossover.airts.model.Reservation;
-import com.crossover.airts.model.ReservationRepository;
-
 @RestController
 public class BookingController {
 	

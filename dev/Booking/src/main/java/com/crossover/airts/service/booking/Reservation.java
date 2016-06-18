@@ -1,4 +1,4 @@
-package com.crossover.airts.model;
+package com.crossover.airts.service.booking;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -35,7 +35,7 @@ public class Reservation implements Serializable {
 	private Schedule retSchedule;	
 	private ReservationTransaction transaction;
 	private Integer nSeats;
-	private Double totalCost;
+	private Double totalCosts;
 
 	//
 	// Accessors/Mutators
@@ -72,7 +72,7 @@ public class Reservation implements Serializable {
 	}
 
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="schedule_id")		
+	@JoinColumn(name="schedule_id", insertable=false, updatable=false)		
 	public Schedule getDepSchedule() {
 		return depSchedule;
 	}
@@ -83,7 +83,7 @@ public class Reservation implements Serializable {
 
 
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="schedule_id")				
+	@JoinColumn(name="schedule_id", insertable=false, updatable=false)				
 	public Schedule getRetSchedule() {
 		return retSchedule;
 	}
@@ -110,15 +110,14 @@ public class Reservation implements Serializable {
 	public void setTransaction(ReservationTransaction transaction) {
 		this.transaction = transaction;
 	}
-
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="transaction_total_costs")				
+	
+	@Column(name="reservation_total_costs")				
 	public Double getTotalCost() {
-		return totalCost;
+		return totalCosts;
 	}
 
 	public void setTotalCost(Double totalCost) {
-		this.totalCost = totalCost;
+		this.totalCosts = totalCost;
 	}
 	
 	//
@@ -134,7 +133,7 @@ public class Reservation implements Serializable {
 		str.append("Return : " + retSchedule + '\n');
 		str.append("N of Seats : " + nSeats + '\n');		
 		str.append("Transaction : " + transaction + '\n');
-		str.append("Total Cost : " + totalCost + '\n');
+		str.append("Total Cost : " + totalCosts + '\n');
 		
 		return str.toString();
 	}
