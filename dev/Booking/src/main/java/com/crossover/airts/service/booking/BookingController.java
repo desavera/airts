@@ -1,4 +1,4 @@
-package com.crossover.airts.booking;
+package com.crossover.airts.service.booking;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.crossover.airts.model.Reservation;
@@ -20,13 +21,20 @@ public class BookingController {
     
 
     @RequestMapping("/bsearch/{owner_id}")
-    public List<Reservation> findReservations(@PathVariable(value="owner_id") Integer owner_id) {    	
-    	List<Reservation> entities = reservationRepo.findByOwner(owner_id);
+    public List<Reservation> findReservations(
+    		final @RequestParam(defaultValue = "0", required = false) int page,
+     	    final @RequestParam(defaultValue = "10", required = false) int pageSize,
+     	    @PathVariable(value="owner_id") Integer owner_id) {
+    	Pageable topTen = new PageRequest(page, pageSize);
+    	List<Reservation> entities = reservationRepo.findByOwner(owner_id,topTen);
         return entities;
     }
     
     @RequestMapping("/bsearch")
-    public List<Reservation> findAllReservations() {    	
+    public List<Reservation> findAllReservations(
+    		final @RequestParam(defaultValue = "0", required = false) int page,
+     	    final @RequestParam(defaultValue = "10", required = false) int pageSize) { 
+    	Pageable topTen = new PageRequest(page, pageSize);
     	List<Reservation> entities = reservationRepo.findAll();
         return entities;
     }

@@ -1,6 +1,6 @@
-package com.crossover.airts.flightsearch;
+package com.crossover.airts.model;
 
-public class FlightSearchQuery {
+public class ScheduleQuery {
 
 	private String origin;	
 	private String destiny;
@@ -8,11 +8,11 @@ public class FlightSearchQuery {
 	private String returning;
 	private int npassengers;
 	
-	public FlightSearchQuery() {
+	public ScheduleQuery() {
 		
 	}
 	
-	public FlightSearchQuery(String origin, String destiny, String departuring, String returning,
+	public ScheduleQuery(String origin, String destiny, String departuring, String returning,
 			int npassengers) {
 		this.origin = origin.toString();
 		this.destiny = destiny.toString();

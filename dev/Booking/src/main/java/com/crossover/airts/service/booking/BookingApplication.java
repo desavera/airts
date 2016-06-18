@@ -1,4 +1,4 @@
-package com.crossover.airts.booking;
+package com.crossover.airts.service.booking;
 
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
