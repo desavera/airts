@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.crossover.airts</groupId>
-	<artifactId>booking</artifactId>
+	<artifactId>flightsearch</artifactId>
 	<version>1.0.0</version>
 	<packaging>war</packaging>	
 	<parent>
@@ -29,12 +29,17 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-		</dependency>						
+		</dependency>				
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>2.6</version>
 		</dependency>
+  		<dependency>  
+      		<groupId>commons-logging</groupId>  
+      		<artifactId>commons-logging</artifactId>  
+      		<version>1.2</version>  
+    	</dependency>		
 	</dependencies>
 
 	<properties>
@@ -42,7 +47,7 @@
 	</properties>
 
 	<build>
-		<finalName>booking</finalName>
+		<finalName>flightsearch</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
