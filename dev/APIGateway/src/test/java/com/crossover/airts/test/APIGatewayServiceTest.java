@@ -15,19 +15,19 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.crossover.airts.service.flightsearch.FlightSearchApplication;
-import com.crossover.airts.service.flightsearch.FlightSearchController;
-import com.crossover.airts.service.flightsearch.ScheduleRepository;
+import com.crossover.airts.service.apigateway.APIGatewayApplication;
+
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(FlightSearchApplication.class)
+@SpringApplicationConfiguration(APIGatewayApplication.class)
 @WebIntegrationTest
-public class FlightSearchServiceTest {
+public class APIGatewayServiceTest {
 
 	
    
-    final String uri = "http://localhost:8080/fsearch";
-	final Logger logger = Logger.getLogger(FlightSearchServiceTest.class);
+    final String uri = "http://localhost:8080/linkedin";
+	final Logger logger = Logger.getLogger(APIGatewayServiceTest.class);
 	
 	RestTemplate template = new TestRestTemplate();
 	

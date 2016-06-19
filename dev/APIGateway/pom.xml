@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.crossover.airts</groupId>
-	<artifactId>flightsearch</artifactId>
+	<artifactId>apigateway</artifactId>
 	<version>1.0.0</version>
 	<packaging>war</packaging>	
 	<parent>
@@ -22,10 +22,6 @@
             		<artifactId>spring-boot-starter-tomcat</artifactId>  
         		    <scope>provided</scope>
         </dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -47,7 +43,7 @@
 	</properties>
 
 	<build>
-		<finalName>flightsearch</finalName>
+		<finalName>apigateway</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
@@ -57,20 +53,8 @@
 					<port>8080</port>
 					<path>/</path>
 					<additionalConfigFilesDir>${basedir}/src/main/tomcat/conf</additionalConfigFilesDir>
-					<systemProperties>
-						<RDS_JDBC_URL>jdbc:mysql://localhost:3306/airtsdev</RDS_JDBC_URL>
-      					<RDS_USERNAME>mvera</RDS_USERNAME>
-      					<RDS_PASSWORD>Traccia2</RDS_PASSWORD>
-      					<RDS_MAX_IDLE>1</RDS_MAX_IDLE>
-      					<RDS_MAX_ACTIVE>1</RDS_MAX_ACTIVE>
-    				</systemProperties>
 				</configuration>
 				<dependencies>
-					<dependency>
-						<groupId>mysql</groupId>
-						<artifactId>mysql-connector-java</artifactId>
-						<version>5.1.13</version>
-					</dependency>
 					<dependency>
 						<groupId>log4j</groupId>
 						<artifactId>log4j</artifactId>

@@ -1,4 +1,4 @@
-package com.crossover.airts.service.flightsearch;
+package com.crossover.airts.service.apigateway;
 
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
-public class FlightSearchApplication extends SpringBootServletInitializer {
+public class APIGatewayApplication extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(FlightSearchApplication.class);
+		return application.sources(APIGatewayApplication.class);
 	}
 }
