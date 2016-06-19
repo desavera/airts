@@ -1,12 +1,12 @@
 CrossOver
 Implementation Guidelines for Airline Ticket Reservation System
 Author : Mário de Sá Vera
-Date : June 18th 2016
+Date : June 19th 2016
 
 
 	This document presents a detailed description of the implementation process of the proposed Airline Ticket Reservation System (named Air-TS) as well as installation instructions for system testing. The implementation follows the design document located at :
 
-var/doc/DESAVERA-DESIGN-DOCUMENT-2016-05.pdf
+[airts installation]/var/doc/DESAVERA-DESIGN-DOCUMENT-2016-05.pdf
 
 	The installation instructions are divided in two different scenarios for a Junior Developer as a target for taking along this implementation (i.e. a development environment) and a testing environment using cloud computing for all system architecture modules.
 
@@ -69,7 +69,7 @@ A RESTful services architecture with a API gateway is a Mediator design pattern 
 
 3- Installation instructions
 
-For running Air-TS system I recommend :
+For running the development environment for Air-TS system I recommend :
 
 - 700 MHz processor (about Intel Celeron or better)
 - 512 MiB RAM (system memory)
@@ -77,27 +77,66 @@ For running Air-TS system I recommend :
 - Linux system (Ubuntu 14.04 up recommended) admin user account access
 - internet access with Download Speed around 2Mbps / 512kbps
 - maven installed
+- mysql installed
 - jdk 1.8 installed
 
-For installation from the pack source code :
+For installation from https://github.com/desavera/airts.git
 
-# apt-get install maven
-# unzip DESAVERA_CA_Air2.zip  
-# cd [unziped directory]
-# mvn install tomcat7:run
+# git clone https://github.com/desavera/airts.git
 
-check the installation complete message and the system is ready to be tested by accessing in a web browser as http://localhost:8080
+Installing and running the APIGateway service :
+
+# cd airts/dev/APIGateway
+# mvn -Dmaven.test.skip=true install tomcat7:run
+
+For testing the APIGateway service :
+
+# cd airts/dev/APIGateway
+# mvn test
+
+check the installation complete message and the system is ready to be tested by accessing in a web browser as http://localhost:8080/linkedin
+
+
+Installing and running the Booking service :
+
+# cd airts/dev/Booking
+# mvn -Dmaven.test.skip=true install tomcat7:run
+
+For testing the Booking service :
+
+# cd airts/dev/Booking
+# mvn test
+
+check the installation complete message and the system is ready to be tested by accessing in a web browser as http://localhost:8080/bsearch
+
+
+Installing and running the FlightSearch service :
+
+# cd airts/dev/FlightService
+# mvn -Dmaven.test.skip=true install tomcat7:run
+
+For testing the APIGateway service :
+
+# cd airts/dev/FlightService
+# mvn test
+
+check the installation complete message and the system is ready to be tested by accessing in a web browser as http://localhost:8080/flightsearch_ui.html
+
 
 For installation from a system image :
 
 Docker.io is the container technology and in order to download the Air-TS development image you should (from an admin unix shell) :
 
 # apt-get install docker
-# unzip DESAVERA_CA_Air2.zip  
-# cd [unziped directory]
+# git clone https://github.com/desavera/airts.git
+# cd airts
 # ./run.sh
 
-check the installation complete message and the system is ready to be tested by accessing in a web browser as http://localhost:8080
+check the installation complete message and the system is ready to be tested by accessing in a web browser as http://localhost:8080/linkedin
+check the installation complete message and the system is ready to be tested by accessing in a web browser as http://localhost:8081/flightsearch_ui.html
+check the installation complete message and the system is ready to be tested by accessing in a web browser as http://localhost:8082/bsearch
+
+as each service will be installed in a separate port.
 
 4- Database creation and initialization
 
@@ -106,7 +145,13 @@ For a Linux system with MySQL 5.5 or newer installed there should be :
 DBUSERNAME : airtsdev
 DBPASSWORD : airts123
 
-after login into MySQL :
+in order to access the database creation and initilization file :
+
+# git clone https://github.com/desavera/airts.git
+# cd airts/var/sql
+
+
+after login into MySQL from the above directory :
 
 mysql> source DB-RESERVATION-CORE.sql
 
