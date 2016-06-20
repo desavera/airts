@@ -1,1 +1,1 @@
-docker run -i -t --name airtsbooking desavera/airtsbooking:latest /bin/bash
+docker run -i -t --name airts-service-apigateway desavera/airts-service-apigateway:latest
