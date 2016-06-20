@@ -115,7 +115,7 @@ Installing and running the FlightSearch service :
 # cd airts/dev/FlightService
 # mvn -Dmaven.test.skip=true install tomcat7:run
 
-For testing the APIGateway service :
+For testing the FlightSearch service :
 
 # cd airts/dev/FlightService
 # mvn test
@@ -128,9 +128,7 @@ For installation from a system image :
 Docker.io is the container technology and in order to download the Air-TS development image you should (from an admin unix shell) :
 
 # apt-get install docker
-# git clone https://github.com/desavera/airts.git
-# cd airts
-# ./run.sh
+# docker run --publish=8080-8082 -i -t --name airts-service-apigateway desavera/airts-service-container:r3 /airts/run.sh
 
 check the installation complete message and the system is ready to be tested by accessing in a web browser as http://localhost:8080/linkedin
 check the installation complete message and the system is ready to be tested by accessing in a web browser as http://localhost:8081/flightsearch_ui.html
@@ -164,7 +162,7 @@ you now have the database ready for running the AIRTS system.
 5- Assumptions adopted
 
 
-I am assuming two deployment scenarios for the system in the current implementation. The one I am delivering here is a development scenario and not a production scenario where the services would be deployed in cloud based infrastructures. This is due to an absolute lack of time for configuring the production environment. Nevertheless the source code for all services will need no modification for a production deployment. The usage of Docker.io was actually going on that direction.
+I am assuming two deployment scenarios for the system in the current implementation. The one I am delivering here is a development scenario and not a testing scenario where the services would be deployed in cloud based infrastructures. This is due to an absolute lack of time for configuring the testing environment. Nevertheless the source code for all services will need no modification for a testing deployment. The usage of Docker.io was actually going on that direction.
 
 Another assumption is that the development environment target is a junior developer so that the major complexities envolved in the system implementation were at least referenced with adequate solutions so that a sort of copy and paste development could take place for things like continuing the development of the other services and so on. With that in mind the choice for Spring Boot and AngularJS were critical due to the suage of frameworks from a point of discipline view enforces good practices which would not be guaranteed to be taken in case of a more loose approach in terms of integrated technologies.
 
