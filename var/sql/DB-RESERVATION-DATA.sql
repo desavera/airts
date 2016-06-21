@@ -9,9 +9,9 @@ INSERT INTO schedule_spot VALUES(1,'Aeroporto internacional Tom Jobim - RIOGalea
 INSERT INTO schedule_spot VALUES(2,'John F. Kennedy International Airport','JFK','EST');
 
 INSERT INTO schedule VALUES (1,STR_TO_DATE('1/01/2017 13:00','%d/%m/%Y %H:%i'),1,2,300,235.0,STR_TO_DATE('1/01/2017 23:00','%d/%m/%Y %H:%i'));
-INSERT INTO schedule VALUES (2,STR_TO_DATE('1/01/2017 16:00','%d/%m/%Y %H:%i'),1,2,500,335.0,STR_TO_DATE('1/01/2017 02:00','%d/%m/%Y %H:%i'));
-INSERT INTO schedule VALUES (3,STR_TO_DATE('1/02/2017 13:00','%d/%m/%Y %H:%i'),1,2,300,235.0,STR_TO_DATE('1/01/2017 23:00','%d/%m/%Y %H:%i'));
-INSERT INTO schedule VALUES (4,STR_TO_DATE('1/02/2017 16:00','%d/%m/%Y %H:%i'),1,2,500,335.0,STR_TO_DATE('1/01/2017 02:00','%d/%m/%Y %H:%i'));
+INSERT INTO schedule VALUES (2,STR_TO_DATE('1/01/2017 16:00','%d/%m/%Y %H:%i'),1,2,500,335.0,STR_TO_DATE('2/01/2017 02:00','%d/%m/%Y %H:%i'));
+INSERT INTO schedule VALUES (3,STR_TO_DATE('1/02/2017 13:00','%d/%m/%Y %H:%i'),2,1,300,235.0,STR_TO_DATE('1/02/2017 23:00','%d/%m/%Y %H:%i'));
+INSERT INTO schedule VALUES (4,STR_TO_DATE('1/02/2017 16:00','%d/%m/%Y %H:%i'),2,1,500,335.0,STR_TO_DATE('2/02/2017 02:00','%d/%m/%Y %H:%i'));
 
 commit;
 
