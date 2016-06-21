@@ -1,10 +1,10 @@
 #!/bin/bash
 
-cd dev/APIGateway
+cd /airts/dev/APIGateway
 mvn -Dmaven.test.skip=true tomcat7:run &
-cd ../FlightSearch
+cd /airts/dev/FlightSearch
 mvn -Dmaven.test.skip=true tomcat7:run &
-cd ../Booking
-mvn -Dmaven.test.skip=true tomcat7:run &
+cd /airts/dev/Booking
+mvn -Dmaven.test.skip=true tomcat7:run 
 
 
