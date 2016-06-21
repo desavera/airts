@@ -59,8 +59,8 @@
 					<additionalConfigFilesDir>${basedir}/src/main/tomcat/conf</additionalConfigFilesDir>
 					<systemProperties>
 						<RDS_JDBC_URL>jdbc:mysql://localhost:3306/airtsdev</RDS_JDBC_URL>
-      					<RDS_USERNAME>mvera</RDS_USERNAME>
-      					<RDS_PASSWORD>Traccia2</RDS_PASSWORD>
+      					<RDS_USERNAME>airtsdev</RDS_USERNAME>
+      					<RDS_PASSWORD>airts123</RDS_PASSWORD>
       					<RDS_MAX_IDLE>1</RDS_MAX_IDLE>
       					<RDS_MAX_ACTIVE>1</RDS_MAX_ACTIVE>
     				</systemProperties>
