@@ -128,7 +128,7 @@ For installation from a system image :
 Docker.io is the container technology and in order to download the Air-TS development image you should (from an admin unix shell) :
 
 # apt-get install docker
-# docker run --publish=8080-8082 -i -t --name airts-service-apigateway desavera/airts-service-container:r3 /airts/run.sh
+# docker run --publish=8080-8082 -i -t --name airts-service-apigateway desavera/airts-service-container:delivery1 /airts/run.sh
 
 check the installation complete message and the system is ready to be tested by accessing in a web browser as http://localhost:8080/linkedin
 check the installation complete message and the system is ready to be tested by accessing in a web browser as http://localhost:8081/flightsearch_ui.html
