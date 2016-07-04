@@ -18,8 +18,8 @@ public class ScheduleQuery {
 	
 	private String origin;	
 	private String destiny;
-	private String departuring;	
-	private String returning;
+	private String departureTime;	
+	private String returnTime;
 	private Integer seats;
 	
 	
@@ -33,25 +33,25 @@ public class ScheduleQuery {
 			int npassengers) {
 		this.origin = origin.toString();
 		this.destiny = destiny.toString();
-		this.departuring = departuring.toString();
-		this.returning = returning.toString();
+		this.departureTime = departuring.toString();
+		this.returnTime = returning.toString();
 		this.seats = npassengers;
 	}
 
-	public String getReturning() {
-		return returning;
+	public String getReturnTime() {
+		return returnTime;
 	}
 
-	public void setReturning(String returning) {
-		this.returning = returning;
+	public void setReturnTime(String returning) {
+		this.returnTime = returning;
 	}
 
-	public String getDeparturing() {
-		return departuring;
+	public String getDepartureTime() {
+		return departureTime;
 	}
 
-	public void setDeparturing(String scheduleDepartureTime) {
-		this.departuring = scheduleDepartureTime;
+	public void setDepartureTime(String departuring) {
+		this.departureTime = departuring;
 	}
 	
 	public String getOrigin() {
@@ -104,8 +104,8 @@ public class ScheduleQuery {
 		StringBuffer str = new StringBuffer();
 		str.append("Origin : " + origin + '\n');
 		str.append("Destiny : " + destiny + '\n');
-		str.append("Departuring : " + departuring + '\n');
-		str.append("Returning : " + returning + '\n');
+		str.append("Departuring : " + departureTime + '\n');
+		str.append("Returning : " + returnTime + '\n');
 		str.append("N of Passengers : " + seats + '\n');		
 		
 		return str.toString();

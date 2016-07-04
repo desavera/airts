@@ -12,16 +12,16 @@
            
                  
                 $scope.departureSchedules = [];  
-                $scope.returningSchedules = [];  
+                $scope.returnSchedules = [];  
                 $scope.selectedSchedules = [];  
                 $scope.schedules = [];  
-                $scope.originBookingSchedule;  
-                $scope.destinyBookingSchedule;  
+                $scope.departureBookingSchedule;  
+                $scope.returnBookingSchedule;  
                 $scope.scheduleForm = {  
                     origin : "",
                     destiny : "",  
-                    departuring : "",                      
-                    returning : "",                      
+                    departureTime : "",                      
+                    returnTime : "",                      
                     seats : ""
                 };      
 
@@ -36,7 +36,7 @@
                    	 $http({  
                        	 method : method,  
                       	  url : url,  
-                       	 data : angular.toJson($scope.scheduleForm),  
+                       	 data : angular.toJson($scope.departureBookingSchedule,$scope.returnBookingSchedule),  
                        	 headers : {  
                        	     'Content-Type' : 'application/json'  
                        	 }  
@@ -44,22 +44,22 @@
 		    }
                 };  
 
-                $scope.selectOriginSchedule = function(schedule) {
+                $scope.selectDepartureSchedule = function(schedule) {
 
-			if ($scope.originBookingSchedule)
-				$scope.unselectSchedule($scope.originBookingSchedule);
+			if ($scope.departureBookingSchedule)
+				$scope.unselectSchedule($scope.departureBookingSchedule);
 
-			$scope.originBookingSchedule = schedule;
-			$scope.selectedSchedules.push($scope.originBookingSchedule);
+			$scope.departureBookingSchedule = schedule;
+			$scope.selectedSchedules.push($scope.departureBookingSchedule);
                 };  
    
-                $scope.selectDestinySchedule = function(schedule) {
+                $scope.selectReturnSchedule = function(schedule) {
 
-			if ($scope.destinyBookingSchedule)
-				$scope.unselectSchedule($scope.destinyBookingSchedule);
+			if ($scope.returnBookingSchedule)
+				$scope.unselectSchedule($scope.returnBookingSchedule);
 
-			$scope.destinyBookingSchedule = schedule;
-			$scope.selectedSchedules.push($scope.destinyBookingSchedule);
+			$scope.returnBookingSchedule = schedule;
+			$scope.selectedSchedules.push($scope.returnBookingSchedule);
                 };  
 
                 $scope.unselectSchedule = function(schedule) {
@@ -69,11 +69,11 @@
 
                 $scope.fillScheduleData = function() {  
 
-			_clearSelectedSchedules();
+			_clearSearchSchedules();
 
 			$http({
 			    method: 'POST',
-			    url: 'http://localhost:8080/fsearch',
+			    url: 'http://localhost:8081/fsearch',
 			    headers: {
  			       'Content-Type': 'application/json', 
     			    'Accept': 'application/json' 
@@ -87,7 +87,7 @@
 				if (schedule.origin.code.substring(0,3).toUpperCase() === $scope.scheduleForm.origin.toUpperCase())
 					$scope.departureSchedules.push(schedule);
 				else
-					$scope.returningSchedules.push(schedule);
+					$scope.returnSchedules.push(schedule);
 		        });
 
                     }, function errorCallback(response) {  
@@ -110,16 +110,15 @@
                 	
                     $scope.scheduleForm.origin = "";  
                     $scope.scheduleForm.destiny = "";
-                    $scope.scheduleForm.departuring = "";                    
-                    $scope.scheduleForm.returning = "";                    
+                    $scope.scheduleForm.departureTime = "";                    
+                    $scope.scheduleForm.returnTime = "";                    
                     $scope.scheduleForm.seats = "";
                 };  
 	
-		function _clearSelectedSchedules() {
+		function _clearSearchSchedules() {
 
-		    $scope.departureSchedules = [];
-		    $scope.returningSchedules = [];
-		    $scope.selectedSchedules = [];
+			$scope.departureSchedules.splice(0,$scope.departureSchedules.length);
+			$scope.returnSchedules.splice(0,$scope.returnSchedules.length);
 		}
 			
 
@@ -238,11 +237,11 @@
                 </tr>
                 <tr>  
                     <td>Departuring Date</td>  
-                    <td><input required type="date" name="input" ng-model="scheduleForm.departuring" placeholder="yyyy-MM-dd" min="2016-01-01" max="2200-12-31"/></td>  
+                    <td><input required type="date" name="input" ng-model="scheduleForm.departureTime" placeholder="yyyy-MM-dd" min="2016-01-01" max="2200-12-31"/></td>  
                 </tr>  
                 <tr>  
                     <td>Returning Date</td>  
-                    <td><input required type="date" name="input" ng-model="scheduleForm.returning" placeholder="yyyy-MM-dd" min="2016-01-01" max="2200-12-31"/></td>  
+                    <td><input required type="date" name="input" ng-model="scheduleForm.returnTime" placeholder="yyyy-MM-dd" min="2016-01-01" max="2200-12-31"/></td>  
                 </tr>  
                 <tr>  
                     <td>Number of Passengers</td>  
@@ -265,10 +264,10 @@
                  
     		<td>{{ schedule.origin.code }}</td>  
     		<td>{{ schedule.destiny.code }}</td>    
-    		<td>{{ schedule.departuring }}</td>
+    		<td>{{ schedule.departureTime }}</td>
     		<td>{{ schedule.costs }}</td>
                   
-            <td colspan="2"><a ng-click="selectOriginSchedule(schedule)" class="blue-button">Select</a></td>  
+            <td colspan="2"><a ng-click="selectDepartureSchedule(schedule)" class="blue-button">Select</a></td>  
            </tr>  
         </table>  
         <table>  
@@ -279,14 +278,14 @@
                 <th>Pricing</th>                   
             </tr>  
    
-           <tr ng-repeat="schedule in returningSchedules">  
+           <tr ng-repeat="schedule in returnSchedules">  
                  
     		<td>{{ schedule.origin.code }}</td>  
     		<td>{{ schedule.destiny.code }}</td>    
-    		<td>{{ schedule.departuring }}</td>
+    		<td>{{ schedule.departureTime }}</td>
     		<td>{{ schedule.costs }}</td>
                   
-            <td colspan="2"><a ng-click="selectDestinySchedule(schedule)" class="blue-button">Select</a></td>  
+            <td colspan="2"><a ng-click="selectReturnSchedule(schedule)" class="blue-button">Select</a></td>  
            </tr>  
         </table>  
 
@@ -303,7 +302,7 @@
                  
     		<td>{{ schedule.origin.code }}</td>  
     		<td>{{ schedule.destiny.code }}</td>    
-    		<td>{{ schedule.departuring }}</td>
+    		<td>{{ schedule.departureTime }}</td>
     		<td>{{ schedule.costs }}</td>
 
             <td colspan="2"><a ng-click="unselectSchedule(schedule)" class="red-button">Remove</a></td>  

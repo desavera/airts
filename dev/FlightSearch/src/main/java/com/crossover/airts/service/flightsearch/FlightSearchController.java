@@ -44,11 +44,10 @@ public class FlightSearchController {
 		Spot origin = spotRepo.findByCode(query.getOrigin().toUpperCase());
 		Spot destiny = spotRepo.findByCode(query.getDestiny().toUpperCase());
 
-		Date queryDeparture = ScheduleQuery.createQueryDateFromString(query.getDeparturing()); 
-		Date queryReturning = ScheduleQuery.createQueryDateFromString(query.getReturning()); 
+		Date queryDeparture = ScheduleQuery.createQueryDateFromString(query.getDepartureTime()); 
+		Date queryReturning = ScheduleQuery.createQueryDateFromString(query.getReturnTime()); 
 
-
-		List<Schedule> matchList = scheduleRepo.findByQueryParam(origin, destiny, query.getSeats(),queryDeparture,queryReturning,pager);
+		List<Schedule> matchList = scheduleRepo.findByQueryParam(origin, destiny, query.getSeats(),queryDeparture,queryReturning,pager);			
 
 		return matchList;
 

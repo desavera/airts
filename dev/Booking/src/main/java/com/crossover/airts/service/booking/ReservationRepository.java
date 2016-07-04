@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
-	List<Reservation> findByOwner(Integer id,Pageable pages);
+	List<Reservation> findByOwner(Integer id,Pageable pages);	
 	Page<Reservation> findAll(Pageable pager);	
 }

@@ -82,8 +82,8 @@ public class Schedule implements Serializable {
 		this.costs = costs;
 	}	
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id", insertable = false, updatable = false)
+	@OneToOne(cascade = CascadeType.ALL)	
+	@JoinColumn(name = "schedule_origin", insertable = false, updatable = false)
 	public Spot getOrigin() {
 		return origin;
 	}
@@ -93,7 +93,7 @@ public class Schedule implements Serializable {
 	}
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id", insertable = false, updatable = false)
+	@JoinColumn(name = "schedule_destiny", insertable = false, updatable = false)	
 	public Spot getDestiny() {
 		return destiny;
 	}
