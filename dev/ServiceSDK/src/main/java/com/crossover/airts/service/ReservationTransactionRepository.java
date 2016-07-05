@@ -1,4 +1,4 @@
-package com.crossover.airts.service.flightsearch;
+package com.crossover.airts.service;
 
 
 import java.util.List;
@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface SpotRepository extends JpaRepository<Spot, Integer> {	
-	List<Spot> findAll();
-	Spot findByCode(String code);
+public interface ReservationTransactionRepository extends JpaRepository<ReservationTransaction, Integer> {	
+	List<ReservationTransaction> findAll();
 }

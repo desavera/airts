@@ -1,4 +1,4 @@
-package com.crossover.airts.service.flightsearch;
+package com.crossover.airts.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -1,4 +1,4 @@
-package com.crossover.airts.service.flightsearch;
+package com.crossover.airts.service;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +18,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.crossover.airts.service.Schedule;
+import com.crossover.airts.service.ScheduleQuery;
+import com.crossover.airts.service.ScheduleRepository;
+import com.crossover.airts.service.Spot;
+import com.crossover.airts.service.SpotRepository;
+
 
 @RestController
 public class FlightSearchController {

@@ -1,4 +1,4 @@
-package com.crossover.airts.service.flightsearch;
+package com.crossover.airts.service;
 
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -6,6 +6,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+
 
 @Configuration
 @EnableAutoConfiguration

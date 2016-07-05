@@ -15,8 +15,8 @@
                 $scope.returnSchedules = [];  
                 $scope.selectedSchedules = [];  
                 $scope.schedules = [];  
-                $scope.departureBookingSchedule;  
-                $scope.returnBookingSchedule;  
+                $scope.departureBookingSchedule=[];
+                $scope.returnBookingSchedule=[];  
                 $scope.scheduleForm = {  
                     origin : "",
                     destiny : "",  
@@ -44,27 +44,33 @@
 		    }
                 };  
 
+		// WE ARE ONLY SUPPORTING SINGLE LEG
                 $scope.selectDepartureSchedule = function(schedule) {
+			
+			if ($scope.departureBookingSchedule.length > 0)
+				$scope.unselectDepartureSchedule();
 
-			if ($scope.departureBookingSchedule)
-				$scope.unselectSchedule($scope.departureBookingSchedule);
-
-			$scope.departureBookingSchedule = schedule;
-			$scope.selectedSchedules.push($scope.departureBookingSchedule);
+			$scope.departureBookingSchedule.push(schedule);
                 };  
    
                 $scope.selectReturnSchedule = function(schedule) {
 
-			if ($scope.returnBookingSchedule)
-				$scope.unselectSchedule($scope.returnBookingSchedule);
+			if ($scope.returnBookingSchedule.length > 0)
+				$scope.unselectReturnSchedule();
 
-			$scope.returnBookingSchedule = schedule;
-			$scope.selectedSchedules.push($scope.returnBookingSchedule);
+			$scope.returnBookingSchedule.push(schedule);
                 };  
 
-                $scope.unselectSchedule = function(schedule) {
+                $scope.unselectDepartureSchedule = function() {
+			
+			$scope.departureBookingSchedule.splice(0,$scope.departureBookingSchedule.length); 
 
-			$scope.selectedSchedules.splice($scope.selectedSchedules.indexOf(schedule),1);
+                };  
+
+                $scope.unselectReturnSchedule = function() {
+			
+			$scope.returnBookingSchedule.splice(0,$scope.returnBookingSchedule.length); 
+
                 };  
 
                 $scope.fillScheduleData = function() {  
@@ -292,20 +298,30 @@
         <form ng-submit="submitBooking()">  
         <table>  
             <tr>                  
-                <th>Origin</th>  
-                <th>Destiny</th>
-                <th>Departuring</th>  
-                <th>Pricing</th>                   
+                <th>Booking Origin</th>  
+                <th>Booking Destiny</th>
+                <th>Booking Departuring</th>  
+                <th>Booking Pricing</th>                   
             </tr>  
    
-           <tr ng-repeat="schedule in selectedSchedules">  
+           <tr ng-repeat="schedule in departureBookingSchedule">    
                  
     		<td>{{ schedule.origin.code }}</td>  
     		<td>{{ schedule.destiny.code }}</td>    
     		<td>{{ schedule.departureTime }}</td>
     		<td>{{ schedule.costs }}</td>
 
-            <td colspan="2"><a ng-click="unselectSchedule(schedule)" class="red-button">Remove</a></td>  
+            <td colspan="2"><a ng-click="unselectDepartureSchedule()" class="red-button">Remove</a></td>  
+
+           </tr>  
+           <tr ng-repeat="schedule in returnBookingSchedule">    
+                 
+    		<td>{{ schedule.origin.code }}</td>  
+    		<td>{{ schedule.destiny.code }}</td>    
+    		<td>{{ schedule.departureTime }}</td>
+    		<td>{{ schedule.costs }}</td>
+
+            <td colspan="2"><a ng-click="unselectReturnSchedule()" class="red-button">Remove</a></td>  
 
            </tr>  
            <tr>  

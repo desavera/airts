@@ -1,4 +1,4 @@
-package com.crossover.airts.service.booking;
+package com.crossover.airts.service;
 
 import java.util.Date;
 

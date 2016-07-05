@@ -1,4 +1,4 @@
-package com.crossover.airts.service.flightsearch;
+package com.crossover.airts.service;
 
 import java.util.Date;
 import java.util.List;
