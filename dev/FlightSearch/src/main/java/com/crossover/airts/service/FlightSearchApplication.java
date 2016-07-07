@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableAutoConfiguration
+@EnableOAuth2Resource
 @ComponentScan
 public class FlightSearchApplication extends SpringBootServletInitializer {
 

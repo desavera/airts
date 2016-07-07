@@ -36,11 +36,15 @@ public class APIGatewayServiceTest {
 
 
 	@Test
-	public void testRequest() throws Exception {
+	public void testAdminLogin() throws Exception {
         String result = template.getForObject(uri, String.class);
-        
         logger.debug(result);
 	}
+	
+	/* TODO
+    Response response = RestAssured.get("http://localhost:8080/foos/1");
+    assertEquals(200, response.getStatusCode());
+    */        
 	
     
  }

@@ -1,19 +1,18 @@
 package com.crossover.airts.service.apigateway;
 
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.web.SpringBootServletInitializer;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.SpringApplication;
 
-@Configuration
-@EnableAutoConfiguration
-@ComponentScan
-public class APIGatewayApplication extends SpringBootServletInitializer {
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(APIGatewayApplication.class);
-	}
+@SpringBootApplication
+@EnableZuulProxy
+public class APIGatewayApplication {
+
+
+  public static void main(String[] args) {
+    SpringApplication.run(APIGatewayApplication.class, args);
+  }
+
 }
