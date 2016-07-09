@@ -1,0 +1,12 @@
+/home/mvera/oficina/airts/dev/ServiceSDK/src/main/java/com/crossover/airts/service/Schedule.java
+/home/mvera/oficina/airts/dev/ServiceSDK/src/main/java/com/crossover/airts/service/ReservationTransaction.java
+/home/mvera/oficina/airts/dev/ServiceSDK/src/main/java/com/crossover/airts/service/Reservation.java
+/home/mvera/oficina/airts/dev/ServiceSDK/src/main/java/com/crossover/airts/service/ReservationState.java
+/home/mvera/oficina/airts/dev/ServiceSDK/src/main/java/com/crossover/airts/service/ScheduleRepository.java
+/home/mvera/oficina/airts/dev/ServiceSDK/src/main/java/com/crossover/airts/service/ReservationStateRepository.java
+/home/mvera/oficina/airts/dev/ServiceSDK/src/main/java/com/crossover/airts/service/ScheduleQuery.java
+/home/mvera/oficina/airts/dev/ServiceSDK/src/main/java/com/crossover/airts/service/SpotRepository.java
+/home/mvera/oficina/airts/dev/ServiceSDK/src/main/java/com/crossover/airts/service/ReservationTransactionRepository.java
+/home/mvera/oficina/airts/dev/ServiceSDK/src/main/java/com/crossover/airts/service/ReservationNotFoundException.java
+/home/mvera/oficina/airts/dev/ServiceSDK/src/main/java/com/crossover/airts/service/ReservationRepository.java
+/home/mvera/oficina/airts/dev/ServiceSDK/src/main/java/com/crossover/airts/service/Spot.java
