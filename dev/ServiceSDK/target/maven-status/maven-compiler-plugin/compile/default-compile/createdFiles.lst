@@ -1,0 +1,12 @@
+com/crossover/airts/service/ReservationStateRepository.class
+com/crossover/airts/service/Reservation.class
+com/crossover/airts/service/Spot.class
+com/crossover/airts/service/ReservationNotFoundException.class
+com/crossover/airts/service/SpotRepository.class
+com/crossover/airts/service/ReservationTransaction.class
+com/crossover/airts/service/ScheduleQuery.class
+com/crossover/airts/service/Schedule.class
+com/crossover/airts/service/ReservationRepository.class
+com/crossover/airts/service/ReservationState.class
+com/crossover/airts/service/ScheduleRepository.class
+com/crossover/airts/service/ReservationTransactionRepository.class

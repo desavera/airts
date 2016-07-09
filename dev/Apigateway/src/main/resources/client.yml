@@ -1,0 +1,18 @@
+zuul:
+  routes:
+    fsearch:
+       path:/fsearch/**  
+       url:http://localhost:8081/fsearch  
+server:
+  port: 9999
+  context-path: /client
+security:
+  oauth2:
+    client:
+      client-id: airts
+      client-secret: airts123
+      access-token-uri: http://localhost:8080/oauth/token
+      user-authorization-uri: http://localhost:8080/oauth/authorize
+      redirect-uri: http://localhost:9999/client/flightsearch_ui.html
+    resource:
+      user-info-uri: http://localhost:8080/me
